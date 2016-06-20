@@ -1,0 +1,22 @@
+<head>
+  <title>HubApp</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> auth}}
+
+</body>
+
+<template name="auth">
+{{> atForm}}
+
+     {{#if currentUser}}
+
+        <span id="logout"><a href="#">Logout</a></span>
+
+      {{/if}}
+
+</template>
+
