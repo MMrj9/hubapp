@@ -1,22 +1,24 @@
 <head>
   <title>HubApp</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Welcome to Hub App!</h1>
 
+<div class="container">
   {{> auth}}
+</div>
 
 </body>
 
 <template name="auth">
-{{> atForm}}
 
-     {{#if currentUser}}
+    {{> atForm}}
 
-        <span id="logout"><a href="#">Logout</a></span>
-
-      {{/if}}
+    {{#if currentUser}}
+      <a id="logout" class="waves-effect waves-light btn"><i class="material-icons right">power_settings_new</i>Log Out</a>
+    {{/if}}
 
 </template>
 
