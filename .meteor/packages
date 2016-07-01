@@ -26,3 +26,6 @@ accounts-facebook
 service-configuration
 accounts-google
 accounts-twitter
+kadira:flow-router
+kadira:blaze-layout
+msavin:mongol
