@@ -38,44 +38,21 @@ ServiceConfiguration.configurations.insert({
 
 
 
-    Accounts.onCreateUser(function(options, user) {
-        if (user.services) {
-            
-            var service = _.keys(user.services)[0];
-            var email = user.services[service].email;
- 
-            console.log(email);
+ Accounts.onCreateUser(function(options, user) {
+    // Use provided profile in options, or create an empty profile object
+    user.profile = options.profile || {};
 
- 
-            if (!email)
-                return user;
- 
-            // see if any existing user has this email address, otherwise create new
-            var existingUser = Meteor.users.findOne({'emails.address': email});
-            
-            
-            if (!existingUser)
-                return user;
+    // Assigns the first and last names to the newly created user object
+    user.profile.firstName = options.firstName;
+    user.profile.lastName = options.lastName;
 
-            console.log(existingUser._id);
-            console.log("he");
+    // Basic Prof Picture Setup
+    user.profile.profPicture = Meteor.absoluteUrl() + "img/default/user.jpg";
+    // Organization
+    user.profile.organization = ["Org"];
+    //Basic Role Set Up
+    user.roles = ["User"];
 
- 
-            // precaution, these will exist from accounts-password if used
-            if (!existingUser.services)
-                existingUser.services = { resume: { loginTokens: [] }};
-            if (!existingUser.services.resume)
-                existingUser.services.resume = { loginTokens: [] };
- 
-            // copy across new service info
-            existingUser.services[service] = user.services[service];
-            existingUser.services.resume.loginTokens.push(
-                user.services.resume.loginTokens[0]
-            );
- 
-            // even worse hackery
-            Meteor.users.remove({_id: existingUser._id}); // remove existing record
-            return existingUser;                          // record is re-inserted
-        }
-    });
- 
+    // Returns the user object
+    return user;
+});
