@@ -54,3 +54,4 @@ ServiceConfiguration.configurations.insert({
     // Returns the user object
     return user;
 });
+

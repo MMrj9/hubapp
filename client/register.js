@@ -1,4 +1,10 @@
+Accounts.config({
+          // enable client user creation
+          forbidClientAccountCreation: false
+});
+
 Template.register.events({
+
     'click #register-button': function(e, t) {
         e.preventDefault();
         // Retrieve the input field values
