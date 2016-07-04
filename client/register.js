@@ -8,6 +8,7 @@ Template.register.events({
             password = $('#password').val(),
             passwordAgain = $('#password-again').val();
 
+
         // Trim Helper
         var trimInput = function(val) {
             return val.replace(/^\s*|\s*$/g, "");
@@ -27,6 +28,8 @@ Template.register.events({
                 });
             }
         }
+
+
 
         // If validation passes, supply the appropriate fields to the
         // Meteor.loginWithPassword() function.

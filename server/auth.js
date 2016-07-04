@@ -1,5 +1,3 @@
-
-
 //Facebook
 
 ServiceConfiguration.configurations.remove({
@@ -47,7 +45,7 @@ ServiceConfiguration.configurations.insert({
     user.profile.lastName = options.lastName;
 
     // Basic Prof Picture Setup
-    user.profile.profPicture = Meteor.absoluteUrl() + "img/default/user.jpg";
+    //user.profile.profPicture = Meteor.absoluteUrl() + "img/default/user.jpg";
     // Organization
     user.profile.organization = ["Org"];
     //Basic Role Set Up
