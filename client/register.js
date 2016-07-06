@@ -20,7 +20,8 @@ Template.register.events({
             lastName = $('#last-name').val(),
             password = $('#password').val(),
             passwordAgain = $('#password-again').val(),
-            birthdate = $('#birthdate').val();
+            birthdate = $('#birthdate').val(),
+            gender = $('#gender').val();
 
 
         // Trim Helper
@@ -73,7 +74,8 @@ Template.register.events({
                 lastName: lastName,
                 password: password,
                 birthdate: birthdate,
-                creatorId: Meteor.userId()
+                creatorId: Meteor.userId(),
+                gender: gender
             }, function(error) {
                 if (error) {
                     return swal({
