@@ -1,8 +1,3 @@
-Accounts.config({
-          // enable client user creation
-          forbidClientAccountCreation: false
-});
-
 Template.register.events({
 
     'click #register-button': function(e, t) {
