@@ -1,3 +1,4 @@
+
 Template.login.events({
     'click #login-button': function(e, t) {
         e.preventDefault();
@@ -18,5 +19,34 @@ Template.login.events({
             }
         });
         return false;
+    },
+
+    'click #facebook-login': function(event) {
+        Meteor.loginWithFacebook({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Facebook login failed");
+            }
+        });
+            FlowRouter.go('/');
+    },
+    
+    'click #google-login': function(event) {
+        Meteor.loginWithGoogle({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Facebook login failed");
+            }
+        });
+            FlowRouter.go('/');
+
+    },
+    
+    'click #twitter-login': function(event) {
+        Meteor.loginWithTwitter({}, function(err){
+            if (err) {
+                throw new Meteor.Error("Facebook login failed");
+            }
+        });
+            FlowRouter.go('/');
+            
     }
 });
