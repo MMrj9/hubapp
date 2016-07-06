@@ -31,8 +31,14 @@
       // Assigns the first and last names to the newly created user object
       user.profile.firstName = options.firstName;
       user.profile.lastName = options.lastName;
+      user.profile.birthDate = new Date(options.birthdate);
+      user.createdBy = options.creatorId;
+      user.lastUpdatedBy = options.creatorId;
     }
 
+
+    user.createdAt = new Date();
+    user.lastUpdatedAt = new Date();
 
     // Basic Prof Picture Setup
     //user.profile.profPicture = Meteor.absoluteUrl() + "img/default/user.jpg";
