@@ -21,8 +21,15 @@ Template.register.events({
             password = $('#password').val(),
             passwordAgain = $('#password-again').val(),
             birthdate = $('#birthdate').val(),
-            gender = $('#gender').val();
+            gender;
 
+            if($("#male").is(':checked')){
+                gender = "male"
+            }
+            if($("#female").is(':checked')){
+                gender = "female"
+            }
+            
 
         // Trim Helper
         var trimInput = function(val) 
@@ -34,7 +41,7 @@ Template.register.events({
         // Email Validation
         var isValidEmail = function validateEmail(email) 
         {
-            //Regex test
+            //Regex test for valid email
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if(re.test(email)){
                 return true;
@@ -48,7 +55,6 @@ Template.register.events({
                 });
             }
         }
-
 
         // Check password is at least 6 chars long
         var isValidPassword = function(pwd, pwd2) {
