@@ -1,12 +1,31 @@
 <template name="home">
-    {{#with currentUser}}
-    <div class="container">
-        <h1>Current User</h1>
-        <p>First Name: {{profile.firstName}}</p>
-        <p>Last Name: {{profile.lastName}}</p>
-        <p>Profile Picture: <img class="circle responsive-img" src="{{profile.pictureLink}}" /></p>
-        <p>Organization: {{profile.organization}}</p>
-    </div>
-     <button id="logout" class="waves-effect waves-light btn"> Logout </button>
-    {{/with}}
+	{{#with currentUser}}
+	<div class="row">
+		<div class="col s4 offset-s4">
+			<img class="circle responsive-img" src="{{profile.pictureLink}}" style="width:200px" />
+			<h2>{{profile.firstName}} {{profile.lastName}}</h2>
+			<div class="col s2">
+				{{#if isMale}}
+				<i class="medium material-icons" style="color: blue">perm_identity</i>
+				{{else}} {{#if isFemale}}
+				<i class="medium material-icons" style="color: pink">perm_identity</i>
+				{{else}}
+				{{/if}}
+				<h4>?</h4>
+				{{/if}}
+			</div> 
+			<div class="col s4">
+				<h4>{{ age }} years</h4>
+			</div>
+       		<div class="col s12">
+				<h5> {{ emails.[0].adress }} </h5>
+			</div>
+			<p> {{createdAt}} </p>
+       
+		</div>  
+	</div>  
+	<div class="row">
+		<button id="logout" class="waves-effect waves-light btn"> Logout </button>
+	</div>
+	{{/with}}
 </template>

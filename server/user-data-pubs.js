@@ -11,12 +11,10 @@ Meteor.publish('userData', function() {
                 "emails": 1,
                 // Created profile property
                 "profile": 1,
+                "data": 1,
                 // Created roles property
-                "roles": 1,
-                "createdAt": 1,
-                "createdBy": 1,
-                "lastUpdatedAt": 1,
-                "lastUpdatedBy": 1
+                "roles": 1
+
             }
         });
     } else {
