@@ -14,14 +14,19 @@
 				<h4>?</h4>
 				{{/if}}
 			</div> 
-			<div class="col s4">
-				<h4>{{ age }} years</h4>
+			<div class="col s6">
+				<h4>{{ age }} years</h4> <span> {{formatDate profile.birthDate}} </span>
 			</div>
        		<div class="col s12">
 				<h5> {{ emails.[0].adress }} </h5>
 			</div>
-			<p> {{createdAt}} </p>
-       
+       		<div class="col s12">
+       			<p> Id: {{_id}} </p>			
+				<p> Created at: {{formatDate data.createdAt}} </p>
+				<p> Created by: {{data.createdBy}} </p>
+				<p> Last updated at: {{formatDate data.lastUpdatedAt}} </p>
+				<p> Last updated by: {{data.lastUpdatedBy}} </p>
+       		</div>
 		</div>  
 	</div>  
 	<div class="row">
