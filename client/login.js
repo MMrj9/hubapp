@@ -25,7 +25,7 @@ Template.login.events({
         Meteor.loginWithFacebook({}, function(err){
             if (err) {
                 return swal({
-                    title: "Login Failed",
+                    title: "Facebook Login Failed",
                     timer: 1700,
                     showConfirmButton: false,
                     type: "error"
@@ -40,7 +40,7 @@ Template.login.events({
         Meteor.loginWithGoogle({}, function(err){
             if (err) {
                 return swal({
-                    title: "Login Failed",
+                    title: "Google Login Failed",
                     timer: 1700,
                     showConfirmButton: false,
                     type: "error"
@@ -56,7 +56,7 @@ Template.login.events({
         Meteor.loginWithTwitter({}, function(err){
             if (err) {
                 return swal({
-                    title: "Login Failed",
+                    title: "Twitter Login Failed",
                     timer: 1700,
                     showConfirmButton: false,
                     type: "error"
