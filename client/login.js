@@ -24,6 +24,12 @@ Template.login.events({
     'click #facebook-login': function(event) {
         Meteor.loginWithFacebook({}, function(err){
             if (err) {
+                return swal({
+                    title: "Login Failed",
+                    timer: 1700,
+                    showConfirmButton: false,
+                    type: "error"
+                });
                 throw new Meteor.Error("Facebook login failed");
             }
         });
@@ -33,7 +39,13 @@ Template.login.events({
     'click #google-login': function(event) {
         Meteor.loginWithGoogle({}, function(err){
             if (err) {
-                throw new Meteor.Error("Facebook login failed");
+                return swal({
+                    title: "Login Failed",
+                    timer: 1700,
+                    showConfirmButton: false,
+                    type: "error"
+                });                
+                throw new Meteor.Error("Google login failed");
             }
         });
             FlowRouter.go('/');
@@ -43,7 +55,13 @@ Template.login.events({
     'click #twitter-login': function(event) {
         Meteor.loginWithTwitter({}, function(err){
             if (err) {
-                throw new Meteor.Error("Facebook login failed");
+                return swal({
+                    title: "Login Failed",
+                    timer: 1700,
+                    showConfirmButton: false,
+                    type: "error"
+                });
+                throw new Meteor.Error("Twitter login failed");
             }
         });
             FlowRouter.go('/');
