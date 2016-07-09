@@ -13,7 +13,8 @@
          user.profile.lastName = user.services.facebook.last_name;
          user.profile.pictureLink = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
          user.profile.gender = user.services.facebook.gender;
-
+     
+         user.data.isActive = true;
          user.data.createdBy = user._id;
          user.data.lastUpdatedBy = user._id;
      } else if (user.services.google) { //Google
@@ -26,6 +27,7 @@
          user.profile.pictureLink = user.services.google.picture;
          user.profile.gender = user.services.google.gender;
 
+         user.data.isActive = true;
          user.data.createdBy = user._id;
          user.data.lastUpdatedBy = user._id;
      } else if (user.services.twitter) { //Twitter
@@ -46,6 +48,7 @@
 
          user.profile.pictureLink = user.services.twitter.profile_image_url;
 
+         user.data.isActive = true;
          user.data.createdBy = user._id;
          user.data.lastUpdatedBy = user._id;
      } else { // Local
@@ -61,9 +64,9 @@
              user.data.createdBy = user._id;
              user.data.lastUpdatedBy = user._id;
          }
+
+         user.data.isActive = false;
      }
-
-
 
      user.data.createdAt = new Date();
      user.data.lastUpdatedAt = new Date();
