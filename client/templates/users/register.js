@@ -13,7 +13,7 @@ Template.register.rendered=function() {
 
 Template.register.helpers({
     countries: function(){
-        return Country.find();
+        return Country.find({ });
     },
 });
 
@@ -30,6 +30,7 @@ Template.register.events({
             password = $('#password').val(),
             passwordAgain = $('#password-again').val(),
             birthdate = $('#birthdate').val(),
+            city = $('#city').val(),
             gender;
 
             if($("#male").is(':checked')){
@@ -90,6 +91,7 @@ Template.register.events({
                 password: password,
                 birthdate: birthdate,
                 creatorId: Meteor.userId(),
+                city: city,
                 gender: gender
             }, function(error) {
                 if (error) {

@@ -62,17 +62,23 @@
                       </div>
                     </div>
                     </div>
-
-        <div class="input-field col s6">
-          <select id="country-select">
-            <option disabled="disabled" selected="selected">Please Select</option> 
-           {{#each countries}}
-                <option value="lol">lol</option>
-            {{/each}}
-          </select>
-          <label>Country Select</label>
-        </div>
-
+                <div class="col s12">
+                    <div class="input-field col s6">
+                      <select id="country-select">
+                        <option disabled="disabled" selected="selected">Please Select</option> 
+                       {{#each countries}}
+                            <option value="lol">lol</option>
+                        {{/each}}
+                      </select>
+                      <label>Country Select</label>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="city" type="text">
+                            <label for="city">City</label>
+                        </div>
+                    </div>
+                </div>
         </form>
         </div>
         </div>
