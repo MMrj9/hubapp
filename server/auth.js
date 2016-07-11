@@ -91,6 +91,7 @@ ServiceConfiguration.configurations.insert({
          user.profile.firstName = options.firstName;
          user.profile.lastName = options.lastName;
          user.profile.birthDate = new Date(options.birthdate);
+         user.profile.countryId = options.countryId;
          user.profile.city = options.city;
          user.profile.gender = options.gender;
 

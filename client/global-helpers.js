@@ -4,3 +4,7 @@ Template.registerHelper('formatDate', function(date) {
   else
   	return "";
 });
+
+Template.registerHelper('getCountryName', function(id) {
+  	return Country.findOne({_id: id}).name;
+});

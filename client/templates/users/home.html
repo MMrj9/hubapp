@@ -20,6 +20,9 @@
        		<div class="col s12">
 				<h5> {{ emails.[0].adress }} </h5>
 			</div>
+			<div class="col s12">
+				<h5> {{ profile.city }} {{getCountryName profile.countryId}} </h5>
+			</div>
        		<div class="col s12">
        			<p> Id: {{_id}} </p>
 				<p> Is Active?: {{data.isActive}} </p>			

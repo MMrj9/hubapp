@@ -8,8 +8,13 @@ Template.register.rendered=function() {
     formatSubmit: 'yyyy-mm-dd',
     hiddenName: true
   }),
-      $('select').material_select();
-}
+    this.autorun(function() 
+        { 
+            var optionsCursor = Country.find().count(); 
+            if(optionsCursor > 0)
+                { $('select').material_select(); } 
+        }); 
+};
 
 Template.register.helpers({
     countries: function(){
@@ -30,6 +35,7 @@ Template.register.events({
             password = $('#password').val(),
             passwordAgain = $('#password-again').val(),
             birthdate = $('#birthdate').val(),
+            countryId = $( "#country-select" ).val(),
             city = $('#city').val(),
             gender;
 
@@ -91,6 +97,7 @@ Template.register.events({
                 password: password,
                 birthdate: birthdate,
                 creatorId: Meteor.userId(),
+                countryId: countryId,
                 city: city,
                 gender: gender
             }, function(error) {
