@@ -7,8 +7,17 @@ Template.register.rendered=function() {
     format: 'yyyy-mm-dd',
     formatSubmit: 'yyyy-mm-dd',
     hiddenName: true
-  });
+  }),
+      $('select').material_select();
 }
+
+Template.register.helpers({
+    countries: function(){
+        return Country.find();
+    },
+});
+
+
 
 Template.register.events({
 
