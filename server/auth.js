@@ -34,7 +34,6 @@ ServiceConfiguration.configurations.insert({
   secret: "7IYk7TcC0FmTfcEkJY9MeyIoIEe7DqSlkBLIy2rCHdkr2nukR5"
 });
 
-
  Accounts.onCreateUser(function(options, user) {
 
      // Use provided profile in options, or create an empty profile object
