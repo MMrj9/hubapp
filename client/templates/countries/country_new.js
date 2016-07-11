@@ -1,10 +1,7 @@
 Template.country_new.events({
   'click #create': function(e, t) {
 
-        console.log("lol");
-
-    e.preventDefault();
-    
+    e.preventDefault();  
 
     var country = {
       name: $('#countryname').val()
@@ -19,7 +16,8 @@ Template.country_new.events({
                 });   
    }
    
-   console.log(Country.find({name: country.name}).count());
+  $("#countryname").val(null);
+  $("#countryname").select();
 
  	if(Country.find({name: country.name}).count()>0){
  		                return swal({
@@ -29,8 +27,6 @@ Template.country_new.events({
                     type: "error"
                 });   
  	}
-
-
     
     Meteor.call('countryInsert', country, function(error, countryId) {
       if (error){
