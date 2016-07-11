@@ -1,47 +1,73 @@
-<template name="register">
-            <div class="row">
-                    <h1>Register</h1>
-            </div>
-            <div class="row">
-                <div class="col s8 offset-s4">
-                    <form id="register-form">
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="input-field">
-                                        <input id="email" type="email">
-                                        <label for="email">Email</label>
-                                </div>
-                                <div class="col s12">
-                                    <div class="input-field">
-                                        <input id="first-name" type="text">
-                                        <label for="first-name">First Name</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <input id="last-name" type="text">
-                                        <label for="last-name">Last Name</label>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="col s12">
-                                    <div class="input-field">
-                                        <input id="password" type="password">
-                                        <label for="password">Password</label>
-                                    </div>
-                                    <div class="input-field">
-                                        <input id="password-again" type="password">
-                                        <label for="password-again">Confirm Password</label>
-                                    </div>
-                                </div>
-                            </div>
-                            </form>
+    <template name="register">
+        <div class="row">
+            <h1>Register</h1>
+        </div>
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <form id="register-form">
+                  <div class="section">
+                    <div class="col s12">
+                        <div class="input-field">
+                            <input id="email" type="email">
+                            <label for="email">Email</label>
                         </div>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="twelve wide column">
-                                <button class="waves-effect waves-light btn" id="register-button" type="submit">Register</button>
-                                <p><a href="/login">Login? Click here</a></p>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="first-name" type="text">
+                                <label for="first-name">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="last-name" type="text">
+                                <label for="last-name">Last Name</label>
                             </div>
                         </div>
                     </div>
+                    <div class="col s12">
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="password" type="password">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="password-again" type="password">
+                                <label for="password-again">Confirm Password</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s12">
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="birthdate" type="date" class="form-control datepicker">
+                                <label for="birthdate">Birthdate</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <label>Gender</label>
+                                <br>
+                                <p>
+                                  <input name="gender" type="radio" id="male" />
+                                  <label for="male">Male</label>
+                                  <input name="gender" type="radio" id="female" />
+                                  <label for="female">Female</label>
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+        </form>
+        <div class="col s6">
+            <button class="waves-effect waves-light btn" id="register-button" type="submit">Register</button>
+            <p><a href="/login">Login? Click here</a></p>
+        </div>
+      </div>
+</div>
 </template>
+

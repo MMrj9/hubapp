@@ -1,11 +1,37 @@
 <template name="home">
-    {{#with currentUser}}
-    <div class="container">
-        <h1>Current User</h1>
-        <p>First Name: {{profile.firstName}}</p>
-        <p>Last Name: {{profile.lastName}}</p>
-        <p>Profile Picture: <img class="circle responsive-img" src="{{profile.profPicture}}" /></p>
-        <p>Organization: {{profile.organization}}</p>
-    </div>
-    {{/with}}
+	{{#with currentUser}}
+	<div class="row">
+		<div class="col s4 offset-s4">
+			<img class="circle responsive-img" src="{{profile.pictureLink}}" style="width:200px" />
+			<h2>{{profile.firstName}} {{profile.lastName}}</h2>
+			<div class="col s2">
+				{{#if isMale}}
+				<i class="medium material-icons" style="color: blue">perm_identity</i>
+				{{else}} {{#if isFemale}}
+				<i class="medium material-icons" style="color: pink">perm_identity</i>
+				{{else}}
+				{{/if}}
+				<h4>?</h4>
+				{{/if}}
+			</div> 
+			<div class="col s6">
+				<h4>{{ age }} years</h4> <span> {{formatDate profile.birthDate}} </span>
+			</div>
+       		<div class="col s12">
+				<h5> {{ emails.[0].adress }} </h5>
+			</div>
+       		<div class="col s12">
+       			<p> Id: {{_id}} </p>
+				<p> Is Active?: {{data.isActive}} </p>			
+				<p> Created at: {{formatDate data.createdAt}} </p>
+				<p> Created by: {{data.createdBy}} </p>
+				<p> Last updated at: {{formatDate data.lastUpdatedAt}} </p>
+				<p> Last updated by: {{data.lastUpdatedBy}} </p>
+       		</div>
+		</div>  
+	</div>  
+	<div class="row">
+		<button id="logout" class="waves-effect waves-light btn"> Logout </button>
+	</div>
+	{{/with}}
 </template>
