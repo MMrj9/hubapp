@@ -94,6 +94,7 @@ ServiceConfiguration.configurations.insert({
          user.profile.countryId = options.countryId;
          user.profile.city = options.city;
          user.profile.gender = options.gender;
+         user.profile.photo = "";
 
          if (options.creatorId != null) {
              user.data.createdBy = options.creatorId;

@@ -2,7 +2,12 @@
 	{{#with currentUser}}
 	<div class="row">
 		<div class="col s4 offset-s4">
+			{{#if profile.pictureLink}}
 			<img class="circle responsive-img" src="{{profile.pictureLink}}" style="width:200px" />
+			{{ else }}
+    		<img class="circle responsive-img" src="{{profile.photoPath}}" style="width:200px" />
+    		{{> upload_bootstrap }}
+    		{{/if}}
 			<h2>{{profile.firstName}} {{profile.lastName}}</h2>
 			<div class="col s2">
 				{{#if isMale}}
@@ -29,13 +34,15 @@
 				{{/if}}
 			</div>
        		<div class="col s12">
-       			<p> Id: {{_id}} </p>
-				<p> Is Active?: {{data.isActive}} </p>		
-				<p> Last login at: {{formatDateTime data.lastLoginAt}} </p>	
-				<p> Created at: {{formatDateTime data.createdAt}} </p>
-				<p> Created by: {{data.createdBy}} </p>
-				<p> Last updated at: {{formatDateTime data.lastUpdatedAt}} </p>
-				<p> Last updated by: {{data.lastUpdatedBy}} </p>
+       		    <div class="card-panel grey" style="color:white;">
+	       			<p> Id: {{_id}} </p>
+					<p> Is Active?: {{data.isActive}} </p>		
+					<p> Last login at: {{formatDateTime data.lastLoginAt}} </p>	
+					<p> Created at: {{formatDateTime data.createdAt}} </p>
+					<p> Created by: {{data.createdBy}} </p>
+					<p> Last updated at: {{formatDateTime data.lastUpdatedAt}} </p>
+					<p> Last updated by: {{data.lastUpdatedBy}} </p>
+				</div>
        		</div>
 		</div>  
 	</div>  
@@ -44,3 +51,4 @@
 	</div>
 	{{/with}}
 </template>
+
