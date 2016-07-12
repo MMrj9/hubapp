@@ -106,6 +106,7 @@ ServiceConfiguration.configurations.insert({
          user.data.isActive = false;
      }
 
+     user.data.lastLoginAt = new Date();
      user.data.createdAt = new Date();
      user.data.lastUpdatedAt = new Date();
 
@@ -119,3 +120,10 @@ ServiceConfiguration.configurations.insert({
      // Returns the user object
      return user;
  });
+
+
+ Meteor.users.allow({
+    update: function (userId, doc) {
+        return true;
+    }
+});

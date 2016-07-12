@@ -15,6 +15,8 @@ Template.login.events({
                     type: "error"
                 });
             } else {
+                //Update last login 
+                Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
                 FlowRouter.go('/');
             }
         });
@@ -33,6 +35,8 @@ Template.login.events({
                 throw new Meteor.Error("Facebook login failed");
             }
         });
+            //Update last login 
+            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
             FlowRouter.go('/');
     },
     
@@ -48,6 +52,8 @@ Template.login.events({
                 throw new Meteor.Error("Google login failed");
             }
         });
+            //Update last login 
+            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
             FlowRouter.go('/');
 
     },
@@ -64,6 +70,8 @@ Template.login.events({
                 throw new Meteor.Error("Twitter login failed");
             }
         });
+            //Update last login 
+            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
             FlowRouter.go('/');
             
     }

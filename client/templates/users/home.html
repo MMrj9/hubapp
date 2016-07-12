@@ -21,14 +21,20 @@
 				<h5> {{ emails.[0].adress }} </h5>
 			</div>
 			<div class="col s12">
-				<h5> {{ profile.city }} {{getCountryName profile.countryId}} </h5>
+				{{#if profile.city}}
+				<h5> {{ profile.city }} </h5>				
+				{{/if}}
+				{{#if profile.countryId}}
+				<h5>{{getCountryName profile.countryId}} </h5>
+				{{/if}}
 			</div>
        		<div class="col s12">
        			<p> Id: {{_id}} </p>
-				<p> Is Active?: {{data.isActive}} </p>			
-				<p> Created at: {{formatDate data.createdAt}} </p>
+				<p> Is Active?: {{data.isActive}} </p>		
+				<p> Last login at: {{formatDateTime data.lastLoginAt}} </p>	
+				<p> Created at: {{formatDateTime data.createdAt}} </p>
 				<p> Created by: {{data.createdBy}} </p>
-				<p> Last updated at: {{formatDate data.lastUpdatedAt}} </p>
+				<p> Last updated at: {{formatDateTime data.lastUpdatedAt}} </p>
 				<p> Last updated by: {{data.lastUpdatedBy}} </p>
        		</div>
 		</div>  

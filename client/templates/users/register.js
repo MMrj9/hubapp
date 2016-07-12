@@ -18,7 +18,7 @@ Template.register.rendered=function() {
 
 Template.register.helpers({
     countries: function(){
-        return Country.find({ });
+        return Country.find({}, {sort: {name: 1}});
     },
 });
 
