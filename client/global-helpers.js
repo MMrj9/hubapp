@@ -13,6 +13,9 @@ Template.registerHelper('formatDateTime', function(date) {
 });
 
 Template.registerHelper('getCountryName', function(id) {
-  	return Country.findOne({_id: id}).name;
+	if(id!=null)
+  		return Country.findOne({_id: id}).name;
+  	else 
+  		return "";
 });
 
