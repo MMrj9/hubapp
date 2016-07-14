@@ -5,8 +5,12 @@
 			{{#if profile.pictureLink}}
 			<img class="circle responsive-img" src="{{profile.pictureLink}}" style="width:200px" />
 			{{ else }}
-    		<img class="circle responsive-img" src=".uploads/tmp/{{profile.photoPath}}" style="width:200px" />
-    		{{> upload_bootstrap }}
+			 <div class="col s12">
+    			<img class="circle responsive-img" src="{{profile.photoPath}}" style="width:200px" />
+    		</div>
+    		<div class="col s12"> 
+    			{{> s3_tester }}
+    		</div>
     		{{/if}}
 			<h2>{{profile.firstName}} {{profile.lastName}}</h2>
 			<div class="col s2">

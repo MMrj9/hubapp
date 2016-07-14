@@ -1,15 +1,6 @@
-//file:/server/init.js
-Meteor.startup(function () {
-  UploadServer.init({
-    tmpDir: process.env.PWD + '../../../../../../../.uploads/tmp',
-    uploadDir: process.env.PWD + '.././../../../../../.uploads/',
-    checkCreateDirectories: true,
-    validateRequest: function(req) {
-    	//2MB max 
-        if (req.headers["content-length"] > 2097152) {
-            return "File is too long!";
-        }
-        return null; 
-    }
-})
-});
+S3.config = {
+    key: 'AKIAJLEN6V23BF3ZZHBQ',
+    secret: '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',
+    bucket: 'hubappstb',
+    region: 'us-west-2' 
+};

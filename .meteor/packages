@@ -32,5 +32,4 @@ cleandersonlobo:date-picker-materialize
 momentjs:moment
 check
 raix:ui-dropped-event
-tomi:upload-server
-tomi:upload-jquery
+lepozepo:s3
