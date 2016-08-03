@@ -1,0 +1,27 @@
+<template name="fbgraph">
+    <div id="main" class="row-fluid">
+      {{> facebookphoto}}
+    </div>
+
+    <button class="btn" id="btn-user-data">Get User Data</button>
+    <div class="well">
+        <pre id="result"></pre>
+    </div>
+</template>
+
+
+<template name="facebookphoto">
+  <div class="photos">
+    {{#each pictures}}
+      {{> photoItem}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="photoItem">
+  <div class="photo">
+    <div class="photo-content">
+      <img class="img-rounded" src="{{picture}}">
+    </div>
+  </div>
+</template>

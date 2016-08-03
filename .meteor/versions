@@ -54,6 +54,7 @@ logging@1.0.14
 materialize:materialize@0.97.6
 meteor@1.1.16
 meteor-base@1.0.4
+meteorhacks:async@1.0.0
 meteortoys:toykit@3.0.4
 minifier-css@1.1.13
 minifier-js@1.1.13
@@ -90,6 +91,7 @@ spacebars-compiler@1.0.12
 srp@1.0.9
 standard-minifier-css@1.0.8
 standard-minifier-js@1.0.8
+stevezhu:fbgraph@2.1.0
 templating@1.1.13
 templating-tools@1.0.4
 tracker@1.0.14
