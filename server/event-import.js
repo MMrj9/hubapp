@@ -1,5 +1,6 @@
   function Facebook(accessToken) {
-    this.fb = Meteor.require('fbgraph');
+    this.fb = Meteor.npmRequire('fbgraph');
+    console.log(accessToken);
     this.accessToken = accessToken;
     this.fb.setAccessToken(this.accessToken);
     this.options = {
@@ -41,5 +42,4 @@ Meteor.methods({
     var fb = new Facebook(Meteor.user().services.facebook.accessToken);
     var photos = fb.getPhotos;
     return photos;
-}
-}); 
+}}); 
