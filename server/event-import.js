@@ -1,6 +1,5 @@
-  function Facebook(accessToken) {
-    this.fb = Meteor.npmRequire('fbgraph');
-    console.log(accessToken);
+function Facebook(accessToken) {
+    this.fb = require('fbgraph');
     this.accessToken = accessToken;
     this.fb.setAccessToken(this.accessToken);
     this.options = {
@@ -17,22 +16,23 @@ Facebook.prototype.query = function(query, method) {
     var data = Meteor.sync(function(done) {
         self.fb[method](query, function(err, res) {
             done(null, res);
-        });
-    });
-    return data.result;
+       });
+   });
+   return data.result;
 }
 
 Facebook.prototype.getUserData = function() {
     return this.query('me');
 }
-Facebook.prototype.getPhotos = function() {
-    return this.query('/me/photos?fields=picture');
+
+Facebook.prototype.getFriendsData = function() {
+    return this.query('/me/friends');
 }
 
 Meteor.methods({
     getUserData: function() {
         var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-        var data = fb.getPhotos();
+        var data = fb.getFriendsData();
         return data;
      }
 });
