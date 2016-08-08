@@ -1,27 +1,22 @@
 <template name="eventnew">
-    <div id="main">
-      {{> facebookphoto}}
-    </div>
+        <div class="row">
+            <h1>Import Event</h1>
+        </div>
+        <div class="row">
+            <div class="col s8 offset-s2">
+                    <div class="col s12">
+                        <div class="input-field">
+                            <input id="eventurl" type="text">
+                            <label for="eventurl">Event Facebook URL</label>
+              </div>
+            </div>
+            <button class="waves-effect waves-light btn" id="btn-event-data">Import</button>
+        </div>
+      </div>
 
-    <button id="btn-event-data">Get Event Data</button>
     <div>
         <pre id="result"></pre>
     </div>
 </template>
 
 
-<template name="facebookphoto">
-  <div class="photos">
-    {{#each pictures}}
-      {{> photoItem}}
-    {{/each}}
-  </div>
-</template>
-
-<template name="photoItem">
-  <div class="photo">
-    <div class="photo-content">
-      <img class="img-rounded" src="{{picture}}">
-    </div>
-  </div>
-</template>

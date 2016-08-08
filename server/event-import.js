@@ -21,8 +21,8 @@ Facebook.prototype.query = function(query, method) {
    return data.result;
 }
 
-Facebook.prototype.getEventData = function() {
-    return this.query('/1035404383145016');
+Facebook.prototype.getEventData = function(url) {
+    return this.query(url);
 }
 
 Facebook.prototype.getFriendsData = function() {
@@ -30,9 +30,10 @@ Facebook.prototype.getFriendsData = function() {
 }
 
 Meteor.methods({
-    getEventData: function() {
+    getEventData: function(url) {
+        console.log(url);
         var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-        var data = fb.getEventData();
+        var data = fb.getEventData(url);
         return data;
      }
 });
