@@ -21,8 +21,8 @@ Facebook.prototype.query = function(query, method) {
    return data.result;
 }
 
-Facebook.prototype.getEventData = function(url) {
-    return this.query(url);
+Facebook.prototype.getEventData = function(id) {
+    return this.query(id);
 }
 
 Facebook.prototype.getFriendsData = function() {
@@ -30,10 +30,34 @@ Facebook.prototype.getFriendsData = function() {
 }
 
 Meteor.methods({
-    getEventData: function(url) {
-        console.log(url);
+    //mudar o nome da função
+    getEventData: function(id) {
+
+        //Falta fazer com que utiliadores não logados com facebook consigam usar
         var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-        var data = fb.getEventData(url);
+        var data = fb.getEventData(id);
+
+        console.log(data.name);
+
+        var event = {
+            name: data.name,
+            description: data.description,
+            start: data.start_time,
+            end: data.end_time,
+            place: data.place.name,
+            city: data.place.location.city,
+            externalId: data.id
+        };
+
+        Meteor.call('tempEventInsert', event, function(error, eventId) {
+              if (error){
+               // throwError(error.reason);
+               console.log(error.reason + " error");
+              } else {
+                return eventId;    
+              }
+            });
+
         return data;
      }
 });
