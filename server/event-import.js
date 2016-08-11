@@ -21,17 +21,21 @@ Facebook.prototype.query = function(query, method) {
    return data.result;
 }
 
-Facebook.prototype.getEventData = function(id) {
+Facebook.prototype.importEventFromFacebook = function(id) {
     return this.query(id);
 }
 
 Meteor.methods({
     //mudar o nome da função
-    getEventData: function(id) {
+    importEventFromFacebook: function(id) {
 
-        //Falta fazer com que utiliadores não logados com facebook consigam usar
-        var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-        var data = fb.getEventData(id);
+        //Falta fazer com que utiliadores não logados com facebook consigam usar4
+        var fb,data; 
+
+        Meteor.call("getAccessToken", function(error, result) {
+          fb= new Facebook(result);
+          data = fb.importEventFromFacebook(id);
+        })
 
         var event = {
             name: data.name,
@@ -46,7 +50,7 @@ Meteor.methods({
         Meteor.call('eventInsert', event, function(error, eventId) {
               if (error){
                // throwError(error.reason);
-               console.log(error.reason + " error");
+               console.log(error);
               } else {
                 return eventId;    
               }
@@ -58,16 +62,22 @@ Meteor.methods({
     //Check if facebook event exists
     isValidFacebookEvent: function(id) {
 
-        //Falta fazer com que utiliadores não logados com facebook consigam usar
-        var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-        var data = fb.getEventData(id);
+          var fb,data; 
 
-        console.log(data);
+          Meteor.call("getAccessToken", function(error, result) {
+          if(result){
+            fb = new Facebook(result);
+            data = fb.importEventFromFacebook(id);
+          }else{
+            console.log("Couldn't get event data")
+          }
+          });
 
-       if(data.hasOwnProperty('error'))
-        return false;
-       else
-        return true;
+          //Check if request result is error
+         if(data.hasOwnProperty('error'))
+          return false;
+         else
+          return true;
      }     
 
 

@@ -3,8 +3,7 @@ Template.eventnew.events({
 
       //Get and Trim the URL
       var url = $('#eventurl').val().trim();
-
-      //Check if valid facebook URL
+            //Check if valid facebook URL
       if (url.indexOf("https://www.facebook.com/events/")==-1) {
                 return swal({
                     title: "Invalid Url",
@@ -25,28 +24,42 @@ Template.eventnew.events({
 
       //Check if facebook event was already imported
       Meteor.call('hasEventWithExternalId', id, function(error, result) {
-          if(result)
+          if(result){
             return swal({
                     title: "Event already imported from Facebook",
                     text: "That facebook event was already imported to this application",
                     showConfirmButton: true,
                     type: "error"
-                });   
+                });
+          }
+
       });
 
       //Check if it is a valid facebook event
       Meteor.call('isValidFacebookEvent', id, function(error, result) {
-          if(!result)
+          if(!result){
             return swal({
                     title: "Invalid Facebook event",
                     text: "That's not a valid facebook event'",
                     showConfirmButton: true,
                     type: "error"
                 });   
+          }
       });
 
+       Meteor.call('importEventFromFacebook', id, function(error, result) {
+          if(error){
+            console.log(error);
+          }
+          else{
+            return swal({
+                    title: "Event sucessfully imported",
+                    showConfirmButton: true,
+                    type: "success"
+                });   
+          }
+      });
 
-       Meteor.call('getEventData', id);
     }
   }
 });

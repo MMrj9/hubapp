@@ -1,4 +1,4 @@
-Template.home.helpers({
+Template.userProfile.helpers({
   'isMale': function(){
   	if(Meteor.user().profile.gender=="male")
   		return true;
@@ -22,11 +22,11 @@ Template.home.helpers({
   }
 });
 
-Template.home.helpers({
+Template.userProfile.helpers({
 
 });
 
-Template.home.events({
+Template.userProfile.events({
 'click #logout': function(event) {
         Meteor.logout(function(err){
             if (err) {
