@@ -25,10 +25,6 @@ Facebook.prototype.getEventData = function(id) {
     return this.query(id);
 }
 
-Facebook.prototype.getFriendsData = function() {
-    return this.query('/me/friends');
-}
-
 Meteor.methods({
     //mudar o nome da função
     getEventData: function(id) {
@@ -36,8 +32,6 @@ Meteor.methods({
         //Falta fazer com que utiliadores não logados com facebook consigam usar
         var fb = new Facebook(Meteor.user().services.facebook.accessToken);
         var data = fb.getEventData(id);
-
-        console.log(data.name);
 
         var event = {
             name: data.name,
@@ -49,7 +43,7 @@ Meteor.methods({
             externalId: data.id
         };
 
-        Meteor.call('tempEventInsert', event, function(error, eventId) {
+        Meteor.call('eventInsert', event, function(error, eventId) {
               if (error){
                // throwError(error.reason);
                console.log(error.reason + " error");
@@ -59,12 +53,23 @@ Meteor.methods({
             });
 
         return data;
-     }
-});
+     },
+   
+    //Check if facebook event exists
+    isValidFacebookEvent: function(id) {
 
-Meteor.methods({
-    getPhotos: function() {   
-    var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-    var photos = fb.getPhotos;
-    return photos;
-}}); 
+        //Falta fazer com que utiliadores não logados com facebook consigam usar
+        var fb = new Facebook(Meteor.user().services.facebook.accessToken);
+        var data = fb.getEventData(id);
+
+        console.log(data);
+
+       if(data.hasOwnProperty('error'))
+        return false;
+       else
+        return true;
+     }     
+
+
+
+});

@@ -13,8 +13,6 @@ Template.eventnew.events({
                     type: "error"
                 });   
      }
-
-     //Falta verificação se evento externo já foi importado
      else{
 
       //Remove the https://www.facebook.com/events/
@@ -25,9 +23,30 @@ Template.eventnew.events({
       if(aux>-1)
         id = id.substring(0,aux);
 
-      console.log(id);
+      //Check if facebook event was already imported
+      Meteor.call('hasEventWithExternalId', id, function(error, result) {
+          if(result)
+            return swal({
+                    title: "Event already imported from Facebook",
+                    text: "That facebook event was already imported to this application",
+                    showConfirmButton: true,
+                    type: "error"
+                });   
+      });
 
-        Meteor.call('getEventData', id);
+      //Check if it is a valid facebook event
+      Meteor.call('isValidFacebookEvent', id, function(error, result) {
+          if(!result)
+            return swal({
+                    title: "Invalid Facebook event",
+                    text: "That's not a valid facebook event'",
+                    showConfirmButton: true,
+                    type: "error"
+                });   
+      });
+
+
+       Meteor.call('getEventData', id);
     }
   }
 });
