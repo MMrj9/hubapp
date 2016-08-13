@@ -14,7 +14,6 @@ Template.register.rendered=function() {
             if(optionsCursor > 0)
                 { $('select').material_select(); } 
         }); 
-    console.log(Meteor.isDevelopment);
 };
 
 Template.register.helpers({

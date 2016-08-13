@@ -8,5 +8,13 @@ Meteor.publish('country', function() {
 //Events
 
 Meteor.publish('event', function() {
-  return Country.find({ });
+  return Event.find({ });
+});
+
+
+//Single Event
+
+Meteor.publish('singleEvent', function(id) {
+  check(id, String);
+  return Event.find(id);
 });

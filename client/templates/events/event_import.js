@@ -1,4 +1,4 @@
-Template.eventnew.rendered = function() {
+Template.eventimport.rendered = function() {
     //Check if user is logged in
     if (Meteor.userId() == null) {
         FlowRouter.go('/login');
@@ -11,7 +11,7 @@ Template.eventnew.rendered = function() {
     }
 };
 
-Template.eventnew.events({
+Template.eventimport.events({
     'click #btn-event-data': function(e) {
 
         //Get and Trim the URL
@@ -61,6 +61,7 @@ Template.eventnew.events({
                                     if (error) {
                                         console.log(error);
                                     } else {
+                                        FlowRouter.go('/events/'+result);
                                         return swal({
                                             title: "Event sucessfully imported",
                                             showConfirmButton: true,

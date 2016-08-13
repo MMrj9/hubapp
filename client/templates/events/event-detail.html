@@ -1,0 +1,21 @@
+<template name="eventdetail">
+
+	{{#with event}}
+	<h2>{{name}}</h2>
+	<p style='color:red'> formatação do texto </p>
+	<p>{{description}}</p>
+	<p> From {{formatDateTime start}} To {{formatDateTime end}} </p>
+	<p>{{place}}, {{city}}</p>
+	<div class="col s12">
+	    <div class="card-panel grey" style="color:white;">
+			<p> Id: {{_id}} </p>
+			<p> External Id: {{externalId}} </p>	
+			<p> Created at: {{formatDateTime createdAt}} </p>
+			<p> Created by: {{createdBy}} </p>
+			<p> Last updated at: {{formatDateTime lastUpdatedAt}} </p>
+			<p> Last updated by: {{lastUpdatedBy}} </p>
+		</div>
+    </div>		
+	{{/with}}
+
+</template>

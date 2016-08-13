@@ -31,6 +31,7 @@ Meteor.methods({
 
         //Falta fazer com que utiliadores não logados com facebook consigam usar4
         var fb,data; 
+        var result;
 
         Meteor.call("getAccessToken", function(error, result) {
           fb= new Facebook(result);
@@ -52,11 +53,11 @@ Meteor.methods({
                // throwError(error.reason);
                console.log(error);
               } else {
-                return eventId;    
+                result = eventId;    
               }
             });
 
-        return data;
+        return result;
      },
    
     //Check if facebook event exists
