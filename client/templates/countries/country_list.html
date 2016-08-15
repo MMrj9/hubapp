@@ -1,0 +1,9 @@
+<template name="countrylist">
+	<div class="row">
+	<div class="col s8 offset-s2">
+	<a href="/country_new">New Country</a> 
+	{{> reactiveTable collection=country settings=listSettings}}
+	</div>
+	</div>
+</template>
+
