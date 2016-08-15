@@ -6,14 +6,16 @@
          </div>
          <div class="col s4">
             <h3>Users</h3>
+            <a href="/user_list">User List</a>
             {{#if currentUser}}
             {{#with currentUser}}
             <p>Logged in as {{profile.firstName}} {{profile.lastName}}</p>
-            <a href="/my_profile">My Profile</a>
+            <a href="/user/{{_id}}">My Profile</a>
             <br>
             <a id="logout" href="#">Logout</a>
             {{/with}}
             {{else}}
+            <p>Not logged in</p>
             <a href="/login">Login</a>
             <br>
             <a href="/register">Register</a>

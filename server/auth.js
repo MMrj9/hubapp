@@ -5,10 +5,10 @@ Accounts.onCreateUser(function(options, user) {
      user.data = {};
 
      if (user.services.facebook) { //Facebook
-         user.emails = [{
-             'adress': user.services.facebook.email,
+         user.email = {
+             'address': user.services.facebook.email,
              'verified': true
-         }];
+         };
          user.profile.firstName = user.services.facebook.first_name;
          user.profile.lastName = user.services.facebook.last_name;
          user.profile.pictureLink = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
@@ -18,10 +18,10 @@ Accounts.onCreateUser(function(options, user) {
          user.data.createdBy = user._id;
          user.data.lastUpdatedBy = user._id;
      } else if (user.services.google) { //Google
-         user.emails = [{
-             'adress': user.services.google.email,
+         user.email = {
+             'address': user.services.google.email,
              'verified': true
-         }];
+         };
          user.profile.firstName = user.services.google.given_name;
          user.profile.lastName = user.services.google.family_name;
          user.profile.pictureLink = user.services.google.picture;
@@ -31,10 +31,10 @@ Accounts.onCreateUser(function(options, user) {
          user.data.createdBy = user._id;
          user.data.lastUpdatedBy = user._id;
      } else if (user.services.twitter) { //Twitter
-         user.emails = [{
-             'adress': user.services.twitter.email,
+         user.email = {
+             'address': user.services.twitter.email,
              'verified': true
-         }];
+         };
          user.email = user.services.twitter.email;
          var name = user.profile.name;
          var splitname = name.split(" ");

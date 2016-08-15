@@ -1,7 +1,7 @@
 Template.userProfile.onCreated(function() {
   var self = this;
   self.autorun(function() {
-    self.subscribe('userData');  
+    self.subscribe('userData', FlowRouter.getParam("userId"));  
   });
 });
 
