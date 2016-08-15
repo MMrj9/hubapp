@@ -15,9 +15,17 @@ Template.countrylist.helpers({
             rowsPerPage: 10,
             fields: [{
                 key: '_id',
-                label: 'Id',
-                sortable: false 
-            },
+                label: 'Id',                
+                fn: function (value, object, key) {     
+                    var pathDef = "/country/:countryId";
+                    var params = {countryId: value};
+                    var queryParams = {};
+
+                    var path = FlowRouter.path(pathDef, params, queryParams);
+                    return new Spacebars.SafeString("<a href="+path+">"+value+"</a>");
+                 }, sortable: false 
+            }
+            ,
             {
                 key: 'metadata.createdAt',
                 label: 'Created At',

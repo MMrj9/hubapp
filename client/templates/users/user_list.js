@@ -26,7 +26,7 @@ Template.userlist.helpers({
                  }, sortable: false 
             },
             {
-                key: 'data.createdAt',
+                key: 'metadata.createdAt',
                 label: 'Created At',
                 sortable: true 
             },
@@ -35,7 +35,7 @@ Template.userlist.helpers({
                 label: 'Email',
                 sortable: true 
             }, {
-                key: 'profile.name',
+                key: 'data.name',
                 label: 'Name',
                 sortable: true 
             }

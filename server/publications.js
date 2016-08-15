@@ -12,7 +12,7 @@ Meteor.publish('userProfile', function(id) {
                 // Default
                 "email": 1,
                 // Created profile property
-                "profile": 1,
+                "data": 1,
             }
         });
     });
@@ -25,9 +25,9 @@ Meteor.publish('userData', function(id) {
                 // Default
                 "email": 1,
                 // Created profile property
-                "profile": 1,
-                // Created data property
                 "data": 1,
+                // Created data property
+                "metadata": 1,
                 // Created roles property
                 "roles": 1
             }
@@ -40,9 +40,9 @@ Meteor.publish('userAll', function() {
                 // Default
                 "email": 1,
                 // Created profile property
-                "profile": 1,
-                // Created data property
                 "data": 1,
+                // Created data property
+                "metadata": 1,
                 // Created roles property
                 "roles": 1
             }
@@ -57,6 +57,10 @@ Meteor.publish('country', function() {
 
 Meteor.publish('countryName', function() {
   return Country.find({ },{fields: {"data": 1}});
+});
+
+Meteor.publish('singleCountry', function(id) {
+  return Country.find({_id: id});
 });
 
 //Events

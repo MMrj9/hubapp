@@ -16,7 +16,7 @@ Template.login.events({
                 });
             } else {
                 //Update last login 
-                Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
+                Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
                 FlowRouter.go('/backoffice');
             }
         });
@@ -36,7 +36,7 @@ Template.login.events({
             }
         });
             //Update last login 
-            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
+            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
             FlowRouter.go('/backoffice');
     },
     
@@ -53,7 +53,7 @@ Template.login.events({
             }
         });
             //Update last login 
-            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
+            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
             FlowRouter.go('/backoffice');
 
     },
@@ -71,7 +71,7 @@ Template.login.events({
             }
         });
             //Update last login 
-            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
+            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
             FlowRouter.go('/backoffice');
             
     }

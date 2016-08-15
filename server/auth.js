@@ -1,84 +1,84 @@
 Accounts.onCreateUser(function(options, user) {
 
-     // Use provided profile in options, or create an empty profile object
-     user.profile = options.profile || {};
-     user.data = {};
+     // Use provided data in options, or create an empty data object
+     user.data = options.data || {};
+     user.metadata = {};
 
      if (user.services.facebook) { //Facebook
          user.email = {
              'address': user.services.facebook.email,
              'verified': true
          };
-         user.profile.firstName = user.services.facebook.first_name;
-         user.profile.lastName = user.services.facebook.last_name;
-         user.profile.pictureLink = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
-         user.profile.gender = user.services.facebook.gender;
+         user.data.firstName = user.services.facebook.first_name;
+         user.data.lastName = user.services.facebook.last_name;
+         user.data.pictureLink = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
+         user.data.gender = user.services.facebook.gender;
      
-         user.data.isActive = true;
-         user.data.createdBy = user._id;
-         user.data.lastUpdatedBy = user._id;
+         user.metadata.isActive = true;
+         user.metadata.createdBy = user._id;
+         user.metadata.lastUpdatedBy = user._id;
      } else if (user.services.google) { //Google
          user.email = {
              'address': user.services.google.email,
              'verified': true
          };
-         user.profile.firstName = user.services.google.given_name;
-         user.profile.lastName = user.services.google.family_name;
-         user.profile.pictureLink = user.services.google.picture;
-         user.profile.gender = user.services.google.gender;
+         user.data.firstName = user.services.google.given_name;
+         user.data.lastName = user.services.google.family_name;
+         user.data.pictureLink = user.services.google.picture;
+         user.data.gender = user.services.google.gender;
 
-         user.data.isActive = true;
-         user.data.createdBy = user._id;
-         user.data.lastUpdatedBy = user._id;
+         user.metadata.isActive = true;
+         user.metadata.createdBy = user._id;
+         user.metadata.lastUpdatedBy = user._id;
      } else if (user.services.twitter) { //Twitter
          user.email = {
              'address': user.services.twitter.email,
              'verified': true
          };
          user.email = user.services.twitter.email;
-         var name = user.profile.name;
+         var name = user.data.name;
          var splitname = name.split(" ");
 
          if (splitname.length > 0) {
-             user.profile.firstName = splitname[0];
+             user.data.firstName = splitname[0];
          }
          if (splitname.length > 1) {
-             user.profile.lastName = splitname[1];
+             user.data.lastName = splitname[1];
          }
 
-         user.profile.pictureLink = user.services.twitter.profile_image_url;
+         user.data.pictureLink = user.services.twitter.data_image_url;
 
-         user.data.isActive = true;
-         user.data.createdBy = user._id;
-         user.data.lastUpdatedBy = user._id;
+         user.metadata.isActive = true;
+         user.metadata.createdBy = user._id;
+         user.metadata.lastUpdatedBy = user._id;
      } else { // Local
-         user.profile.firstName = options.firstName;
-         user.profile.lastName = options.lastName;
-         user.profile.birthDate = new Date(options.birthdate);
-         user.profile.countryId = options.countryId;
-         user.profile.city = options.city;
-         user.profile.gender = options.gender;
-         user.profile.photo = "";
+         user.data.firstName = options.firstName;
+         user.data.lastName = options.lastName;
+         user.data.birthDate = new Date(options.birthdate);
+         user.data.countryId = options.countryId;
+         user.data.city = options.city;
+         user.data.gender = options.gender;
+         user.data.photo = "";
 
          if (options.creatorId != null) {
-             user.data.createdBy = options.creatorId;
-             user.data.lastUpdatedBy = options.creatorId;
+             user.metadata.createdBy = options.creatorId;
+             user.metadata.lastUpdatedBy = options.creatorId;
          } else {
-             user.data.createdBy = user._id;
-             user.data.lastUpdatedBy = user._id;
+             user.metadata.createdBy = user._id;
+             user.metadata.lastUpdatedBy = user._id;
          }
 
-         user.data.isActive = false;
+         user.metadata.isActive = false;
      }
 
-     user.data.lastLoginAt = new Date();
-     user.data.createdAt = new Date();
-     user.data.lastUpdatedAt = new Date();
+     user.metadata.lastLoginAt = new Date();
+     user.metadata.createdAt = new Date();
+     user.metadata.lastUpdatedAt = new Date();
 
      // Basic Prof Picture Setup
-     //user.profile.profPicture = Meteor.absoluteUrl() + "img/default/user.jpg";
+     //user.data.profPicture = Meteor.absoluteUrl() + "img/default/user.jpg";
      // Organization
-     user.profile.organization = ["Org"];
+     user.data.organization = ["Org"];
      //Basic Role Set Up
      user.roles = ["User"];
 

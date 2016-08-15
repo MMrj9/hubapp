@@ -15,9 +15,9 @@
             <p> External Id: {{data.externalId}} </p>
             <p> Is Draft?: {{data.isDraft}} </p>
             <p> Created at: {{formatDateTime metadata.createdAt}} </p>
-            <p> Created by: {{metadata.createdBy}} </p>
+            <p> Created by: <a href="/user/{{metadata.createdBy}}" class="whitelink"> {{metadata.createdBy}} </a></p>
             <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
-            <p> Last updated by: {{metadata.lastUpdatedBy}} </p>
+            <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}}</a></p>
          </div>
       </div>
    </div>

@@ -1,4 +1,4 @@
-Template.eventlist.onCreated(function() {
+Template.eventdetail.onCreated(function() {
   var self = this;
   self.autorun(function() {
     self.subscribe('singleEvent', FlowRouter.getParam("eventId"));  

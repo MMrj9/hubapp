@@ -6,21 +6,24 @@ Template.userProfile.onCreated(function() {
 });
 
 Template.userProfile.helpers({
+  'user': function(){
+    return Meteor.users.find({_id: FlowRouter.getParam("userId")}).fetch()[0];
+  },
   'isMale': function(){
-  	if(Meteor.user().profile.gender=="male")
+  	if(Meteor.user().data.gender=="male")
   		return true;
   	else
   		return false;
   },
   'isFemale': function(){
-  	if(Meteor.user().profile.gender=="female")
+  	if(Meteor.user().data.gender=="female")
   		return true;
   	else 
   		return false;
   },
   'age': function(){
-  	if(Meteor.user().profile.birthDate){
-	  var birthday = +new Date(Meteor.user().profile.birthDate);
+  	if(Meteor.user().data.birthDate){
+	  var birthday = +new Date(Meteor.user().data.birthDate);
 	  return ~~((Date.now() - birthday) / (31557600000));
 	}
 	else 

@@ -3,3 +3,8 @@
     display: block;
     overflow: hidden;
 }
+
+.whitelink{
+	color: white !important;
+	text-decoration: underline;
+}
