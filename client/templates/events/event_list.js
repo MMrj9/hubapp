@@ -15,10 +15,25 @@ Template.eventlist.helpers({
 
                     var path = FlowRouter.path(pathDef, params, queryParams);
                     return new Spacebars.SafeString("<a href="+path+">"+value+"</a>");
-                 }
+                 }, sortable: false 
+            },
+            {
+                key: 'createdAt',
+                label: 'Created At',
+                sortable: true 
             }, {
                 key: 'name',
-                label: 'Name'
+                label: 'Name',
+                sortable: true 
+            },
+            {
+                key: 'start',
+                label: 'When',
+                sortable: true 
+            },
+            {
+                key: 'place',
+                label: 'Where'
             }]
         }
     }
