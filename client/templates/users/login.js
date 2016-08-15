@@ -17,7 +17,7 @@ Template.login.events({
             } else {
                 //Update last login 
                 Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
-                FlowRouter.go('/');
+                FlowRouter.go('/my_profile');
             }
         });
         return false;
@@ -37,7 +37,7 @@ Template.login.events({
         });
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
-            FlowRouter.go('/');
+            FlowRouter.go('/my_profile');
     },
     
     'click #google-login': function(event) {
@@ -54,7 +54,7 @@ Template.login.events({
         });
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
-            FlowRouter.go('/');
+            FlowRouter.go('/my_profile');
 
     },
     
@@ -72,7 +72,7 @@ Template.login.events({
         });
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.lastLoginAt": new Date()}});
-            FlowRouter.go('/');
+            FlowRouter.go('/my_profile');
             
     }
 });

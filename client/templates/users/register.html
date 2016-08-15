@@ -60,33 +60,33 @@
                               </p>
                           </div>
                       </div>
-                    </div>
-                    </div>
-                <div class="col s12">
-                    <div class="input-field col s6">
-                      <select id="country-select">
-                        <option disabled="disabled" selected="selected">Please Select</option> 
-                       {{#each countries}}
-                            <option value="{{_id}}">{{name}}</option>
-                        {{/each}}
-                      </select>
-                      <label>Country</label>
-                    </div>
-                    <div class="col s6">
-                        <div class="input-field">
-                            <input id="city" type="text">
-                            <label for="city">City</label>
-                        </div>
-                    </div>
+                  </div>
+              </div>
+              <div class="col s12">
+                <div class="input-field col s6">
+                  <select id="country-select">
+                    <option disabled="disabled" selected="selected">Please Select</option> 
+                    {{#each countries}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+                <label>Country</label>
+            </div>
+            <div class="col s6">
+                <div class="input-field">
+                    <input id="city" type="text">
+                    <label for="city">City</label>
                 </div>
-        </form>
+            </div>
         </div>
-        </div>
-        <div class="row" style="margin-top: 50px">
-            <div class="col s8 offset-s2">
-            <button class="waves-effect waves-light btn" id="register-button" type="submit">Register</button>
-            <p><a href="/login">Login? Click here</a></p>
-      </div>
-      </div>
+    </form>
+</div>
+</div>
+<div class="row" style="margin-top: 50px">
+    <div class="col s8 offset-s2">
+        <button class="waves-effect waves-light btn" id="register-button" type="submit">Register</button>
+        <p><a href="/login">Login? Click here</a></p>
+    </div>
+</div>
 </template>
 

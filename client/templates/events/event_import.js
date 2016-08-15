@@ -61,7 +61,7 @@ Template.eventimport.events({
                                     if (error) {
                                         console.log(error);
                                     } else {
-                                        FlowRouter.go('/events/'+result);
+                                        FlowRouter.go('/events/' + result);
                                         return swal({
                                             title: "Event sucessfully imported",
                                             showConfirmButton: true,
@@ -79,7 +79,7 @@ Template.eventimport.events({
             FlowRouter.go('/login');
             return swal({
                 title: "User must be logged in",
-                text: "Please login before trying to createa an event",
+                text: "Please login before trying to create an event",
                 showConfirmButton: true,
                 type: "warning"
             });
