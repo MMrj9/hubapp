@@ -50,7 +50,7 @@ Meteor.methods({
             cover = fb.getEventPicture(id);
         })
 
-        var event = {
+        var event = { data:{
             name: data.name,
             description: data.description,
             start: data.start_time,
@@ -60,6 +60,7 @@ Meteor.methods({
             externalId: data.id,
             isDraft: true,
             image: cover.cover.source
+        }
         };
 
         Meteor.call('eventInsert', event, function(error, eventId) {

@@ -1,6 +1,5 @@
 Meteor.autorun(function(){
-  Meteor.subscribe('userData');
-  Meteor.subscribe('country');
-  Meteor.subscribe('event');
+  Meteor.subscribe('userProfile');
+  Meteor.subscribe('countryName')
 });
 

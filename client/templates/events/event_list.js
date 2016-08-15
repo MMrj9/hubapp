@@ -1,3 +1,11 @@
+Template.eventlist.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('event');  
+  });
+});
+
+
 Template.eventlist.helpers({
     event: function() {
  		return Event;
@@ -18,21 +26,21 @@ Template.eventlist.helpers({
                  }, sortable: false 
             },
             {
-                key: 'createdAt',
+                key: 'metadata.createdAt',
                 label: 'Created At',
                 sortable: true 
             }, {
-                key: 'name',
+                key: 'data.name',
                 label: 'Name',
                 sortable: true 
             },
             {
-                key: 'start',
+                key: 'data.start',
                 label: 'When',
                 sortable: true 
             },
             {
-                key: 'place',
+                key: 'data.place',
                 label: 'Where'
             }]
         }

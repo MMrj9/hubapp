@@ -1,3 +1,11 @@
+Template.eventlist.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('singleEvent', FlowRouter.getParam("eventId"));  
+  });
+});
+
+
 Template.eventdetail.helpers({
     event: function() {
         return Event.find({

@@ -1,3 +1,11 @@
+Template.countrylist.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('country');  
+  });
+});
+
+
 Template.countrylist.helpers({
     country: function() {
  		return Country;
@@ -11,11 +19,11 @@ Template.countrylist.helpers({
                 sortable: false 
             },
             {
-                key: 'createdAt',
+                key: 'metadata.createdAt',
                 label: 'Created At',
                 sortable: true 
             }, {
-                key: 'name',
+                key: 'data.name',
                 label: 'Name',
                 sortable: true 
             }

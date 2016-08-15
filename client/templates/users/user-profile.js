@@ -1,3 +1,10 @@
+Template.userProfile.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    self.subscribe('userData');  
+  });
+});
+
 Template.userProfile.helpers({
   'isMale': function(){
   	if(Meteor.user().profile.gender=="male")

@@ -1,13 +1,22 @@
+Template.country_new.onCreated(function() {
+    var self = this;
+    self.autorun(function() {
+        self.subscribe('countryName');
+    });
+});
+
+
 Template.country_new.events({
     'click #create': function(e, t) {
 
         e.preventDefault();
 
-        var country = {
+        var country = {data:{
             name: $('#countryname').val()
+        }
         };
 
-        if (!country.name) {
+        if (!country.data.name) {
             return swal({
                 title: "Invalid Name",
                 text: "Please try again",
@@ -20,7 +29,7 @@ Template.country_new.events({
         $("#countryname").select();
 
         if (Country.find({
-                name: country.name
+                "data.name": country.data.name
             }).count() > 0) {
             return swal({
                 title: "Invalid Name",

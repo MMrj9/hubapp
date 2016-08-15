@@ -2,22 +2,22 @@
    {{#with event}}
    <div class="row">
       <div class="col s8 offset-s2">
-         <img class="responsive-img" src={{image}}>	
-         <h2>{{name}}</h2>
-         <h5> From {{formatDateTime start}} To {{formatDateTime end}} </h5>
-         <h5>@ {{place}}, {{city}}</h5>
+         <img class="responsive-img" src={{data.image}}>	
+         <h2>{{data.name}}</h2>
+         <h5> From {{formatDateTime data.start}} To {{formatDateTime data.end}} </h5>
+         <h5>@ {{data.place}}, {{data.city}}</h5>
          <p style='color:red'> formatação do texto</p>
-         <div id="eventdescription" class="flow-text eventdescription">{{description}}</div>
+         <div id="eventdescription" class="flow-text eventdescription">{{data.description}}</div>
          <a id="more" href="#"> Show more </a>
          <a id="less" href="#" style='display:none'> Show less </a>
          <div class="card-panel grey" style="color:white;">
             <p> Id: {{_id}} </p>
-            <p> External Id: {{externalId}} </p>
-            <p> Is Draft?: {{isDraft}} </p>
-            <p> Created at: {{formatDateTime createdAt}} </p>
-            <p> Created by: {{createdBy}} </p>
-            <p> Last updated at: {{formatDateTime lastUpdatedAt}} </p>
-            <p> Last updated by: {{lastUpdatedBy}} </p>
+            <p> External Id: {{data.externalId}} </p>
+            <p> Is Draft?: {{data.isDraft}} </p>
+            <p> Created at: {{formatDateTime metadata.createdAt}} </p>
+            <p> Created by: {{metadata.createdBy}} </p>
+            <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
+            <p> Last updated by: {{metadata.lastUpdatedBy}} </p>
          </div>
       </div>
    </div>

@@ -16,11 +16,12 @@ Template.register.rendered = function() {
         });
 };
 
+
 Template.register.helpers({
     countries: function() {
         return Country.find({}, {
             sort: {
-                name: 1
+                "data.name": 1
             }
         });
     },
