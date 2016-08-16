@@ -35,7 +35,7 @@ Template.userlist.helpers({
                 label: 'Email',
                 sortable: true 
             }, {
-                key: 'data.name',
+                key: 'data.fullName',
                 label: 'Name',
                 sortable: true 
             }

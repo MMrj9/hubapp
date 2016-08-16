@@ -1,7 +1,7 @@
 <template name="userProfile">
 	{{#with user}}
 	<div class="row">
-		<div class="col s4 offset-s4">
+		<div class="col s6 offset-s3">
 			{{#if data.pictureLink}}
 			<img class="circle responsive-img" src="{{data.pictureLink}}" style="width:200px" />
 			{{ else }}
@@ -12,6 +12,7 @@
     			{{> s3_tester }}
     		</div>
     		{{/if}}
+    		<br>
 			<h2>{{data.firstName}} {{data.lastName}}</h2>
 			<div class="col s2">
 				{{#if isMale}}

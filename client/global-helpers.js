@@ -18,7 +18,7 @@ Template.registerHelper('formatDateTime', function(date) {
 //Procurar nome de país através de id
 Template.registerHelper('getCountryName', function(id) {
 	if(id!=null)
-  		return Country.findOne({_id: id}).name;
+  		return Country.findOne({_id: id}).data.name;
   	else 
   		return "";
 });

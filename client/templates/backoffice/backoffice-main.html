@@ -9,7 +9,7 @@
             <a href="/user_list">User List</a>
             {{#if currentUser}}
             {{#with currentUser}}
-            <p>Logged in as {{profile.firstName}} {{profile.lastName}}</p>
+            <p>Logged in as {{data.firstName}} {{data.lastName}}</p>
             <a href="/user/{{_id}}">My Profile</a>
             <br>
             <a id="logout" href="#">Logout</a>

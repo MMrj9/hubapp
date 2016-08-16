@@ -52,13 +52,17 @@ Accounts.onCreateUser(function(options, user) {
          user.metadata.createdBy = user._id;
          user.metadata.lastUpdatedBy = user._id;
      } else { // Local
+         user.email = {
+             'address': options.email,
+             'verified': false
+         };
          user.data.firstName = options.firstName;
          user.data.lastName = options.lastName;
          user.data.birthDate = new Date(options.birthdate);
          user.data.countryId = options.countryId;
          user.data.city = options.city;
          user.data.gender = options.gender;
-         user.data.photo = "";
+         user.data.photoPath = "";
 
          if (options.creatorId != null) {
              user.metadata.createdBy = options.creatorId;
@@ -70,6 +74,9 @@ Accounts.onCreateUser(function(options, user) {
 
          user.metadata.isActive = false;
      }
+
+     //Concat first + last name to create full name
+     user.data.fullName = user.data.firstName + " " + user.data.lastName;
 
      user.metadata.lastLoginAt = new Date();
      user.metadata.createdAt = new Date();
