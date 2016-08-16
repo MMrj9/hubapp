@@ -38,6 +38,9 @@ Template.userlist.helpers({
                 key: 'data.fullName',
                 label: 'Name',
                 sortable: true 
+            },{
+                key: 'metadata.isActive',
+                label: 'Is Active?',
             }
 
     ]

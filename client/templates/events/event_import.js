@@ -1,11 +1,10 @@
 Template.eventimport.onCreated(function() {
     //Check if user is logged in
-        console.log("here");
     if (Meteor.userId() == null) {
         FlowRouter.go('/login');
         return swal({
             title: "User must be logged in",
-            text: "Please login before trying to createa an event",
+            text: "Please login before trying to create an event",
             showConfirmButton: true,
             type: "warning"
         });
