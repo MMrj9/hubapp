@@ -17,6 +17,7 @@ Accounts.onCreateUser(function(options, user) {
          user.metadata.isActive = true;
          user.metadata.createdBy = user._id;
          user.metadata.lastUpdatedBy = user._id;
+         user.metadata.authType = "Facebook";
      } else if (user.services.google) { //Google
          user.email = {
              'address': user.services.google.email,
@@ -30,6 +31,7 @@ Accounts.onCreateUser(function(options, user) {
          user.metadata.isActive = true;
          user.metadata.createdBy = user._id;
          user.metadata.lastUpdatedBy = user._id;
+         user.metadata.authType = "Google";
      } else if (user.services.twitter) { //Twitter
          user.email = {
              'address': user.services.twitter.email,
@@ -51,6 +53,7 @@ Accounts.onCreateUser(function(options, user) {
          user.metadata.isActive = true;
          user.metadata.createdBy = user._id;
          user.metadata.lastUpdatedBy = user._id;
+         user.metadata.authType = "Twitter";
      } else { // Local
          user.email = {
              'address': options.email,
@@ -63,6 +66,8 @@ Accounts.onCreateUser(function(options, user) {
          user.data.city = options.city;
          user.data.gender = options.gender;
          user.data.photoPath = "";
+         
+         user.metadata.isActive = true;
 
          if (options.creatorId != null) {
              user.metadata.createdBy = options.creatorId;
@@ -73,6 +78,7 @@ Accounts.onCreateUser(function(options, user) {
          }
 
          user.metadata.isActive = false;
+         user.metadata.authType = "Local";
      }
 
      //Concat first + last name to create full name

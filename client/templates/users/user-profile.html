@@ -1,7 +1,9 @@
 <template name="userProfile">
 	{{#with user}}
 	<div class="row">
-		<div class="col s6 offset-s3">
+		<div class="col s4 offset-s4">
+         <a href="/user_list">User List</a>
+         <br>
 			{{#if data.pictureLink}}
 			<img class="circle responsive-img" src="{{data.pictureLink}}" style="width:200px" />
 			{{ else }}
@@ -24,7 +26,7 @@
 				<h4>?</h4>
 				{{/if}}
 			</div> 
-			<div class="col s6">
+			<div class="col s10">
 				<h4>{{ age }} years</h4> <span> {{formatDate data.birthDate}} </span>
 			</div>
        		<div class="col s12">
@@ -42,10 +44,11 @@
        		    <div class="card-panel grey" style="color:white;">
 	       			<p> Id: {{_id}} </p>
 					<p> Is Active?: {{metadata.isActive}} </p>		
+					<p> Authentication: {{metadata.authType}} </p>
 					<p> Last login at: {{formatDateTime metadata.lastLoginAt}} </p>	
 					<p> Created at: {{formatDateTime metadata.createdAt}} </p>
 		            <p> Created by: <a href="/user/{{metadata.createdBy}}" class="whitelink"> {{metadata.createdBy}} </a></p>
-		            <p> Last updated at: {{formatDateTime metametadata.lastUpdatedAt}} </p>
+		            <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
 		            <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a></p>
 				</div>
        		</div>

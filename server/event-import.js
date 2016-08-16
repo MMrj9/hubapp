@@ -52,7 +52,8 @@ Meteor.methods({
 
         var event = { data:{
             name: data.name,
-            description: data.description,
+            //formatação do texto
+            description: decodeURIComponent(encodeURIComponent(data.description)),
             start: data.start_time,
             end: data.end_time,
             place: data.place.name,

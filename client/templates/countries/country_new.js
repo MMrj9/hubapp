@@ -1,4 +1,16 @@
 Template.country_new.onCreated(function() {
+
+    //Check if user is logged in
+    if (Meteor.userId() == null) {
+        FlowRouter.go('/login');
+        return swal({
+            title: "User must be logged in",
+            text: "Please login before trying to create an event",
+            showConfirmButton: true,
+            type: "warning"
+        });
+    }
+
     var self = this;
     self.autorun(function() {
         self.subscribe('countryName');

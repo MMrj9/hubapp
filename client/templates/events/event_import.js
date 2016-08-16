@@ -1,5 +1,6 @@
-Template.eventimport.rendered = function() {
+Template.eventimport.onCreated(function() {
     //Check if user is logged in
+        console.log("here");
     if (Meteor.userId() == null) {
         FlowRouter.go('/login');
         return swal({
@@ -9,7 +10,7 @@ Template.eventimport.rendered = function() {
             type: "warning"
         });
     }
-};
+});
 
 Template.eventimport.events({
     'click #btn-event-data': function(e) {
