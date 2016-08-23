@@ -1,7 +1,45 @@
 <template name="mainLayout">
+  	<meta name="viewport" content="width=device-width, initial-scale=1"/>
   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+  	<link rel="stylesheet" type="text/css" href="/css/custom.css">
   	
-  	<a href="/backoffice">BackOffice</a>
+ 
+  <nav class="blue darken-2">
+    <div class="nav-wrapper">
+      <a href="/backoffice" class="brand-logo"><i class="material-icons">settings</i>BackOffice</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+	    {{#if currentUser}}
+	    {{#with currentUser}}
+	    <li>Logged in as {{data.firstName}} {{data.lastName}}</li>
+	    <li><a href="/user/{{_id}}">My Profile</a></li>
+	    <li><a id="logout" href="#">Logout</a></li>
+	    {{/with}}
+	    {{else}}
+	    <li>Not logged in</li>
+	    <li><a href="/login">Login</a></li>
+	    <li><a href="/register">Register</a></li>
+	    {{/if}}
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+	    {{#if currentUser}}
+	    {{#with currentUser}}
+	    <li>Logged in as {{data.firstName}} {{data.lastName}}</li>
+	    <li><a href="/user/{{_id}}">My Profile</a></li>
+	    <li><a id="logout" href="#">Logout</a></li>
+	    {{/with}}
+	    {{else}}
+	    <li>Not logged in</li>
+	    <li><a href="/login">Login</a></li>
+	    <li><a href="/register">Register</a></li>
+	    {{/if}}
+      </ul>
+    </div>
+  </nav>
+        
+
+
 
     {{>Template.dynamic template=content}}
 </template>

@@ -65,7 +65,7 @@ Accounts.onCreateUser(function(options, user) {
          user.data.countryId = options.countryId;
          user.data.city = options.city;
          user.data.gender = options.gender;
-         user.data.photoPath = "";
+         user.data.pictureLink = "";
          
          user.metadata.isActive = true;
 
@@ -77,7 +77,6 @@ Accounts.onCreateUser(function(options, user) {
              user.metadata.lastUpdatedBy = user._id;
          }
 
-         user.metadata.isActive = false;
          user.metadata.authType = "Local";
      }
 

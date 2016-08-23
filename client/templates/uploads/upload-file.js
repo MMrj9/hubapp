@@ -7,7 +7,7 @@ Template.s3_tester.events({
                 path:"uploads"
             },function(e,r){
                 //change the path of the user profile image
-                Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.photoPath": r.url}});
+                Meteor.users.update( { _id: Meteor.userId() }, {$set: {"data.pictureLink": r.url}});
         });
     }
 })

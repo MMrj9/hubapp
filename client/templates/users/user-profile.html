@@ -1,62 +1,66 @@
 <template name="userProfile">
-	{{#with user}}
-	<div class="row">
-		<div class="col s4 offset-s4">
-         <a href="/user_list">User List</a>
+   {{#with user}}
+   <div class="row">
+      <nav class="blue lighten-2">
+         <div class="nav-wrapper">
+            <div class="col s12">
+               <a href="/backoffice" class="breadcrumb">BackOffice</a>
+               <a href="/user_list" class="breadcrumb">User List</a>
+               <a href="#" class="breadcrumb">{{data.fullName}}</a>
+            </div>
+         </div>
+      </nav>
+      <br>
+      <div class="col s12 l6">
+         <div class="col s12 l6">
+            <img class="circle responsive-img" src="{{data.pictureLink}}" style="width:200px" />
+            <div class="col s12"> 
+               {{> s3_tester }}
+            </div>
+         </div>
          <br>
-			{{#if data.pictureLink}}
-			<img class="circle responsive-img" src="{{data.pictureLink}}" style="width:200px" />
-			{{ else }}
-			 <div class="col s12">
-    			<img class="circle responsive-img" src="{{data.photoPath}}" style="width:200px" />
-    		</div>
-    		<div class="col s12"> 
-    			{{> s3_tester }}
-    		</div>
-    		{{/if}}
-    		<br>
-			<h2>{{data.firstName}} {{data.lastName}}</h2>
-			<div class="col s2">
-				{{#if isMale}}
-				<i class="medium material-icons" style="color: blue">perm_identity</i>
-				{{else}} {{#if isFemale}}
-				<i class="medium material-icons" style="color: pink">perm_identity</i>
-				{{else}}
-				{{/if}}
-				<h4>?</h4>
-				{{/if}}
-			</div> 
-			<div class="col s10">
-				<h4>{{ age }} years</h4> <span> {{formatDate data.birthDate}} </span>
-			</div>
-       		<div class="col s12">
-				<h5> {{ email.address }} </h5>
-			</div>
-			<div class="col s12">
-				{{#if data.city}}
-				<h5> {{ data.city }} </h5>				
-				{{/if}}
-				{{#if data.countryId}}
-				<h5>{{getCountryName data.countryId}} </h5>
-				{{/if}}
-			</div>
-       		<div class="col s12">
-       		    <div class="card-panel grey" style="color:white;">
-	       			<p> Id: {{_id}} </p>
-					<p> Is Active?: {{metadata.isActive}} </p>		
-					<p> Authentication: {{metadata.authType}} </p>
-					<p> Last login at: {{formatDateTime metadata.lastLoginAt}} </p>	
-					<p> Created at: {{formatDateTime metadata.createdAt}} </p>
-		            <p> Created by: <a href="/user/{{metadata.createdBy}}" class="whitelink"> {{metadata.createdBy}} </a></p>
-		            <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
-		            <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a></p>
-				</div>
-       		</div>
-       		<div class="col s12">
-       			<button id="logout" class="waves-effect waves-light btn"> Logout </button>
-       		</div>
-		</div>  
-	</div>  
-	{{/with}}
+         <h2>{{data.firstName}} {{data.lastName}}</h2>
+         <div class="col s2">
+            {{#if isMale}}
+            <i class="medium material-icons" style="color: blue">perm_identity</i>
+            {{else}} {{#if isFemale}}
+            <i class="medium material-icons" style="color: pink">perm_identity</i>
+            {{else}}
+            {{/if}}
+            <h4>?</h4>
+            {{/if}}
+         </div>
+         <div class="col s10">
+            <h4>{{ age }} years</h4>
+            <span> {{formatDate data.birthDate}} </span>
+         </div>
+         <div class="col s12">
+            <h5> {{ email.address }} </h5>
+         </div>
+         <div class="col s12">
+            {{#if data.city}}
+            <h5> {{ data.city }} </h5>
+            {{/if}}
+            {{#if data.countryId}}
+            <h5>{{getCountryName data.countryId}} </h5>
+            {{/if}}
+         </div>
+      </div>
+      <div class="col s12 l6">
+         <div class="card-panel grey" style="color:white;">
+            <p> Id: {{_id}} </p>
+            <p> Is Active?: {{metadata.isActive}} </p>
+            <p> Authentication: {{metadata.authType}} </p>
+            <p> Last login at: {{formatDateTime metadata.lastLoginAt}} </p>
+            <p> Created at: {{formatDateTime metadata.createdAt}} </p>
+            <p> Created by: <a href="/user/{{metadata.createdBy}}" class="whitelink"> {{metadata.createdBy}} </a></p>
+            <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
+            <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a></p>
+         </div>
+      </div>
+      <div class="col s12">
+         <button id="logout" class="waves-effect waves-light btn"> Logout </button>
+      </div>
+   </div>
+   {{/with}}
 </template>
-
