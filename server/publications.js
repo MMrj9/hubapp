@@ -76,3 +76,17 @@ Meteor.publish('eventOnlyData', function() {
 Meteor.publish('singleEvent', function(id) {
   return Event.find(id);
 });
+
+//Event Types
+
+Meteor.publish('eventType', function() {
+  return EventType.find({ });
+});
+
+Meteor.publish('eventTypeName', function() {
+  return EventType.find({ },{fields: {"data": 1}});
+});
+
+Meteor.publish('singleEventType', function(id) {
+  return EventType.find({_id: id});
+});

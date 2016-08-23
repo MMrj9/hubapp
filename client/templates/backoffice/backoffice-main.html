@@ -1,10 +1,10 @@
 <template name="backofficemain">
    <div class="row">
-      <div class="col s8 offset-s2">
          <div class="col s12">
             <h1>Backoffice</h1>
          </div>
-         <div class="col s4">
+         <div class="col s12 m10 m8 offset-m1 offset-l2">
+         <div class="col s6">
             <h3>Users</h3>
             <a href="/user_list">User List</a>
             {{#if currentUser}}
@@ -21,17 +21,23 @@
             <a href="/register">Register</a>
             {{/if}}
          </div>
-         <div class="col s4">
+         <div class="col s6">
             <h3>Events</h3>
             <a href="/event_list">Event List</a>
             <br>
             <a href="/event_import">Import Event</a>
          </div>
-         <div class="col s4">
+         <div class="col s6">
             <h3>Countries</h3>
             <a href="/country_list">Country List</a>
             <br>
             <a href="/country_new">New Country</a>
+         </div>
+         <div class="col s6">
+            <h3>Event Types</h3>
+            <a href="/eventType_list">Event Type List</a>
+            <br>
+            <a href="/eventType_new">New Event Type</a>
          </div>
       </div>
    </div>

@@ -1,11 +1,11 @@
-Template.country_new.onCreated(function() {
+Template.eventType_new.onCreated(function() {
 
     //Check if user is logged in
     if (Meteor.userId() == null) {
         FlowRouter.go('/login');
         return swal({
             title: "User must be logged in",
-            text: "Please login before trying to create an country",
+            text: "Please login before trying to create an event",
             showConfirmButton: true,
             type: "warning"
         });
@@ -13,22 +13,22 @@ Template.country_new.onCreated(function() {
 
     var self = this;
     self.autorun(function() {
-        self.subscribe('countryName');
+        self.subscribe('eventTypeName');
     });
 });
 
 
-Template.country_new.events({
+Template.eventType_new.events({
     'click #create': function(e, t) {
 
         e.preventDefault();
 
-        var country = {data:{
-            name: $('#countryname').val()
+        var eventType = {data:{
+            name: $('#eventTypename').val()
         }
         };
 
-        if (!country.data.name) {
+        if (!eventType.data.name) {
             return swal({
                 title: "Invalid Name",
                 text: "Please try again",
@@ -37,27 +37,31 @@ Template.country_new.events({
             });
         }
 
-        $("#countryname").val(null);
-        $("#countryname").select();
+        $("#eventTypename").val(null);
+        $("#eventTypename").select();
 
-        if (Country.find({
-                "data.name": country.data.name
+        console.log(EventType.find({
+                "data.name": eventType.data.name
+            }).count());
+
+        if (EventType.find({
+                "data.name": eventType.data.name
             }).count() > 0) {
             return swal({
                 title: "Invalid Name",
-                text: "A country with that name already exists",
+                text: "An Event Type with that name already exists",
                 showConfirmButton: true,
                 type: "error"
             });
         }
 
-        Meteor.call('countryInsert', country, function(error, countryId) {
+        Meteor.call('eventTypeInsert', eventType, function(error, eventTypeId) {
             if (error) {
                 throwError(error.reason);
             } else {
                 return swal({
                     title: "Sucess",
-                    text: "Country created",
+                    text: "Event Type created",
                     showConfirmButton: true,
                     type: "success"
                 });

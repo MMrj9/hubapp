@@ -1,0 +1,18 @@
+<template name="eventTypedetail">
+   {{#with eventType}}
+   <div class="row">
+      <div class="col s8 offset-s2">
+         <a href="/eventType_list">Event Type List</a>
+         <h2>{{data.name}}</h2>
+         <div class="card-panel grey" style="color:white;">
+            <p> Id: {{_id}} </p>
+            <p> Created at: {{formatDateTime metadata.createdAt}} </p>
+            <p> Created by: <a href="/user/{{metadata.createdBy}}" class="whitelink"> {{metadata.createdBy}} </a></p>
+            <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
+            <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a></p>
+         </div>
+         <button class="btn waves-effect waves-light red" type="submit" id="delete-eventType">Delete</button>  
+      </div>
+   </div>
+   {{/with}}
+</template>

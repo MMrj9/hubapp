@@ -24,7 +24,7 @@ Template.countrydetail.helpers({
 });
 
 Template.countrydetail.events({
-    'click #delete-country': function(event) {
+    'click #delete-country': function(e) {
         return swal({
             title: "Are you sure?",
             type: "warning",

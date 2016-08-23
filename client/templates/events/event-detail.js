@@ -33,5 +33,26 @@ Template.eventdetail.events({
         $('#eventdescription').animate({
             'height': '100px'
         })
+    },
+    'click #delete-event': function(e) {
+        return swal({
+            title: "Are you sure?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        }, function() {
+            Meteor.call("eventDelete", FlowRouter.getParam("eventId"), function(error, result) {
+                if (error)
+                    return swal("Error", error.reason, "error");
+                else {
+                    FlowRouter.go("/event_list");
+                    return swal("Deleted!", "Event has been deleted.", "success");
+                }
+            })
+        });
+
     }
 })
+
