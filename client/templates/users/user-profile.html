@@ -27,11 +27,12 @@
             <i class="medium material-icons" style="color: pink">perm_identity</i>
             {{else}}
             {{/if}}
-            <h4>?</h4>
             {{/if}}
          </div>
          <div class="col s10">
-            <h4>{{ age }} years</h4>
+            {{#unless isEmpty age}}
+            <h4>{{ age data.birthDate }} years</h4>
+            {{/unless}}
             <span> {{formatDate data.birthDate}} </span>
          </div>
          <div class="col s12">
@@ -57,9 +58,6 @@
             <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
             <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a></p>
          </div>
-      </div>
-      <div class="col s12">
-         <button id="logout" class="waves-effect waves-light btn"> Logout </button>
       </div>
    </div>
    {{/with}}

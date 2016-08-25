@@ -69,6 +69,7 @@ momentjs:moment@2.14.1
 mongo@1.1.11
 mongo-id@1.0.5
 msavin:mongol@2.0.1
+mystor:device-detection@0.2.0
 npm-bcrypt@0.9.1
 npm-mongo@1.5.46
 oauth@1.1.11

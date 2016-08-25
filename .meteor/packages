@@ -39,3 +39,5 @@ npm-bcrypt@0.9.1
 aslagle:reactive-table
 accounts-password@1.3.0
 shell-server
+mystor:device-detection
+email

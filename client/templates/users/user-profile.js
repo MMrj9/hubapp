@@ -22,27 +22,14 @@ Template.userProfile.helpers({
   		return false;
   },
   'age': function(){
-  	if(Meteor.user().data.birthDate){
-	  var birthday = +new Date(Meteor.user().data.birthDate);
-	  return ~~((Date.now() - birthday) / (31557600000));
-	}
-	else 
-		return "?";
-
+  	if(Meteor.user().data.birthDate)
+    {
+	   var birthday = +new Date(Meteor.user().data.birthDate);
+     console.log(~~((Date.now() - birthday) / (31557600000)));
+	   return ~~((Date.now() - birthday) / (31557600000));
+   }
+	  else 
+		  return false;
   }
 });
 
-Template.userProfile.helpers({
-
-});
-
-Template.userProfile.events({
-'click #logout': function(event) {
-        Meteor.logout(function(err){
-            if (err) {
-                throw new Meteor.Error("Logout failed");
-            }
-        })
-        FlowRouter.go('/login');
-    }
-});

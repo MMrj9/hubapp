@@ -23,4 +23,12 @@ Template.registerHelper('getCountryName', function(id) {
   		return "";
 });
 
+//Verificar se atributo/objecto é nulo
+Template.registerHelper('isEmpty', function (object) {
+    if(object==null || object=="")
+      return true;
+    else
+      return false;
+});
+
 

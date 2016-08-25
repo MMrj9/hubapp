@@ -28,17 +28,15 @@ Template.userlist.helpers({
             {
                 key: 'metadata.createdAt',
                 label: 'Created At',
-                sortable: true 
+                fn: function (value) { return moment(value).format('MM-DD-YYYY HH:mm');}, 
+                sortable: true
             },
             {
                 key: 'email.address',
                 label: 'Email',
                 sortable: true 
-            }, {
-                key: 'data.fullName',
-                label: 'Name',
-                sortable: true 
-            },{
+            },
+            {
                 key: 'metadata.isActive',
                 label: 'Is Active?',
             }
