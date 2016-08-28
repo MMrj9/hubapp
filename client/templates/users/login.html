@@ -1,13 +1,11 @@
 <template name="login">
-            <div class="row">
-                    <h1>Login</h1>
-            </div>
-            <div class="row">
-                <div class="col s8 offset-s2">
-                    <button id="facebook-login" class="waves-effect waves-light btn"> Login with Facebook</button>
-                    <button id="google-login" class="waves-effect waves-light btn"> Login with Google</button>
-                    <button id="twitter-login" class="waves-effect waves-light btn"> Login with Twitter</button>
+                           <div class="col s12 animated pulse">
+                    <div class="col s12 m4 l4 offset-m4 offset-l4 center-align">
+                    <img src="img/hublogoblue.png" alt="hublogoblue" style="height:200px;margin-top:100px;">
+                    </div>
+                    <div class="col s12 l4 offset-l4 center-align">
                     <form id="login-form" action="action">
+                        <div class="col s12">
                         <div class="input-field">
                                 <input id="login-email" type="email">
                                 <label for="login-email">Email</label>
@@ -18,10 +16,19 @@
                         </div>                        
                         <button class="btn waves-effect waves-light" type="submit" id="login-button">Login
                             <i class="material-icons right">send</i>
-                        </button>  
-                        <p><a href="/register">Click here to register</a></p>                      
+                        </button> 
+                        <div class="col s12"> 
+                        <a href="/register">Click here to register</a>
+                        </div>
+                        </div>
+                        <div class="col s12">
+                        <button id="facebook-login" class="waves-effect waves-light btn" style="margin-top:20px"> Login with Facebook</button>
+                        </div>
+                        <div class="col s12">
+                        <button id="google-login" class="waves-effect waves-light btn" style="margin-top:20px"> Login with Google</button>                    
+                        </div>
                     </form>
+                    </div>
                 </div>
-            </div>
 </template>
 

@@ -17,13 +17,15 @@ Template.login.events({
             } else {
                 //Update last login 
                 Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
-                FlowRouter.go('/backoffice');
+                FlowRouter.go('/');
             }
         });
         return false;
     },
 
     'click #facebook-login': function(event) {
+                    console.log("here");
+
         Meteor.loginWithFacebook({}, function(err){
             if (err) {
                 return swal({
@@ -54,25 +56,7 @@ Template.login.events({
         });
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
-            FlowRouter.go('/backoffice');
+            FlowRouter.go('/');
 
-    },
-    
-    'click #twitter-login': function(event) {
-        Meteor.loginWithTwitter({}, function(err){
-            if (err) {
-                return swal({
-                    title: "Twitter Login Failed",
-                    timer: 1700,
-                    showConfirmButton: false,
-                    type: "error"
-                });
-                throw new Meteor.Error("Twitter login failed");
-            }
-        });
-            //Update last login 
-            Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
-            FlowRouter.go('/backoffice');
-            
     }
-});
+    });

@@ -32,28 +32,6 @@ Accounts.onCreateUser(function(options, user) {
          user.metadata.createdBy = user._id;
          user.metadata.lastUpdatedBy = user._id;
          user.metadata.authType = "Google";
-     } else if (user.services.twitter) { //Twitter
-         user.email = {
-             'address': user.services.twitter.email,
-             'verified': true
-         };
-         user.email = user.services.twitter.email;
-         var name = user.data.name;
-         var splitname = name.split(" ");
-
-         if (splitname.length > 0) {
-             user.data.firstName = splitname[0];
-         }
-         if (splitname.length > 1) {
-             user.data.lastName = splitname[1];
-         }
-
-         user.data.pictureLink = user.services.twitter.data_image_url;
-
-         user.metadata.isActive = true;
-         user.metadata.createdBy = user._id;
-         user.metadata.lastUpdatedBy = user._id;
-         user.metadata.authType = "Twitter";
      } else { // Local
          user.email = {
              'address': options.email,

@@ -13,6 +13,7 @@ Template.userlist.helpers({
     listSettings: function() {
         return {
             rowsPerPage: 10,
+            class: 'highlight',
             fields: [{
                 key: '_id',
                 label: 'Id',
