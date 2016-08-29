@@ -1,4 +1,3 @@
-
 Template.login.events({
     'click #login-button': function(e, t) {
         e.preventDefault();
@@ -24,8 +23,7 @@ Template.login.events({
     },
 
     'click #facebook-login': function(event) {
-                    console.log("here");
-
+        event.preventDefault();
         Meteor.loginWithFacebook({}, function(err){
             if (err) {
                 return swal({
@@ -39,10 +37,11 @@ Template.login.events({
         });
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
-            FlowRouter.go('/backoffice');
+            FlowRouter.go('/');
     },
     
     'click #google-login': function(event) {
+        event.preventDefault();
         Meteor.loginWithGoogle({}, function(err){
             if (err) {
                 return swal({
@@ -59,4 +58,4 @@ Template.login.events({
             FlowRouter.go('/');
 
     }
-    });
+});
