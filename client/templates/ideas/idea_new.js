@@ -16,10 +16,23 @@ Template.idea_new.events({
 
         e.preventDefault();
 
-        var idea = {data:{
+        var idea;
+        if(Meteor.user()){
+        idea = {data:{
+            name: Meteor.user().data.fullName,
+            email: Meteor.user().email.address,
             content: $('#content').val()
         }
         };
+        }
+        else{
+        idea = {data:{
+            name: Template.instance().name.get(),
+            email: Template.instance().email.get(),
+            content: $('#content').val()
+        }
+        };
+        }
 
         if (!idea.data.content) {
             return swal({
@@ -40,6 +53,7 @@ Template.idea_new.events({
                     showConfirmButton: true,
                     type: "success"
                 });
+                FlowRouter.go('/idea');
             }
         });
     },
