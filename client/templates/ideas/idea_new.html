@@ -1,21 +1,54 @@
 <template name="idea_new">
-        <div class="row">
-            <div class="col s12 animated slideInLeft">
-                <div class="col s12 m4 l4 offset-m4 offset-l4 center-align">
+    <div class="row">
+        <div class="col s12 l12 center-align">
+                <h1>Idea Contest</h1>
                 <img src="img/hublogoblue.png" alt="hublogoblue" style="height:200px;margin-top:100px;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi viverra sem nunc, eu volutpat velit faucibus et. Maecenas volutpat id augue a venenatis. Nulla eu nibh efficitur, bibendum felis dignissim, consequat dui. Ut erat elit, feugiat eget justo sit amet, rutrum tincidunt felis. Donec euismod dapibus commodo. Praesent sodales quam et eros facilisis, in egestas ex tempus. Curabitur bibendum elit id est ultrices, pulvinar tincidunt felis vehicula. Morbi volutpat nec augue sit amet facilisis. Praesent rutrum ultricies diam semper suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ac purus venenatis, consequat nisi ut, porttitor nisl. Integer tincidunt convallis mi, in imperdiet urna tempus vitae. Mauris quis purus bibendum, feugiat lorem nec, condimentum quam. Ut aliquet, nisl a mollis vestibulum, tortor lacus euismod tellus, sed fringilla ex risus eget metus. Donec posuere odio ac venenatis consectetur.</p>
+        </div>
+    </div>
+    <div class="row">
+        {{#if isAuthenticated}}
+        <div class="col s12">
+            <form id="idea-form">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="content" class="materialize-textarea"></textarea>
+                    <label for="content">Ideia</label>
                 </div>
-                <div class="col s12">
-                <form id="idea-form">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">mode_edit</i>
-                            <textarea id="content" class="materialize-textarea"></textarea>
-                            <label for="content">Ideia</label>
-     					</div>
-                        <div class="col s12 l4 offset-l4 center-align">
-                            <button class="waves-effect waves-light btn blue darken-3" id="create" type="submit">Create</button>
-                        </div>  
-     			</form>
+                <div class="col s12 l4 offset-l4 center-align">
+                    <button class="waves-effect waves-light btn blue darken-3" id="create" type="submit">Create</button>
                 </div>
-     		</div>
-     	</div>
+            </form>
+        </div>
+        {{else}}
+        <div class="col s12 l12">
+            <div class="col s12 l4 offset-l2">
+                    <div class="col">
+                        <div class="input-field">
+                            <input id="name" type="text">
+                            <label for="name">Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-field">
+                            <input id="email" type="email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <button id="check-auth" class="waves-effect waves-light btn" style="margin-top:20px"> Next</button>
+            </div>
+            <div class="col s12 l1">
+                <h5 class="valign">or</h5>
+            </div>             
+            <div class="col s12 l4">
+                <div class="col">
+                    <button id="facebook-login" class="waves-effect waves-light btn" style="margin-top:20px"> Login with Facebook</button>
+                </div>
+                <div class="col">
+                    <button id="google-login" class="waves-effect waves-light btn" style="margin-top:20px"> Login with Google</button>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
 </template>
