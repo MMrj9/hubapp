@@ -1,4 +1,4 @@
-Template.eventType_new.onCreated(function() {
+Template.category_new.onCreated(function() {
 
     //Check if user is logged in
     if (Meteor.userId() == null) {
@@ -13,22 +13,22 @@ Template.eventType_new.onCreated(function() {
 
     var self = this;
     self.autorun(function() {
-        self.subscribe('eventTypeName');
+        self.subscribe('categoryName');
     });
 });
 
 
-Template.eventType_new.events({
+Template.category_new.events({
     'click #create': function(e, t) {
 
         e.preventDefault();
 
-        var eventType = {data:{
-            name: $('#eventTypename').val()
+        var category = {data:{
+            name: $('#categoryname').val()
         }
         };
 
-        if (!eventType.data.name) {
+        if (!category.data.name) {
             return swal({
                 title: "Invalid Name",
                 text: "Please try again",
@@ -37,31 +37,27 @@ Template.eventType_new.events({
             });
         }
 
-        $("#eventTypename").val(null);
-        $("#eventTypename").select();
+        $("#categoryname").val(null);
+        $("#categoryname").select();
 
-        console.log(EventType.find({
-                "data.name": eventType.data.name
-            }).count());
-
-        if (EventType.find({
-                "data.name": eventType.data.name
+        if (Category.find({
+                "data.name": category.data.name
             }).count() > 0) {
             return swal({
                 title: "Invalid Name",
-                text: "An Event Type with that name already exists",
+                text: "A Category with that name already exists",
                 showConfirmButton: true,
                 type: "error"
             });
         }
 
-        Meteor.call('eventTypeInsert', eventType, function(error, eventTypeId) {
+        Meteor.call('categoryInsert', category, function(error, categoryId) {
             if (error) {
                 throwError(error.reason);
             } else {
                 return swal({
                     title: "Sucess",
-                    text: "Event Type created",
+                    text: "Category created",
                     showConfirmButton: true,
                     type: "success"
                 });

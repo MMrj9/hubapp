@@ -1,8 +1,16 @@
 <template name="eventdetail">
    {{#with event}}
    <div class="row">
+         <nav class="blue lighten-2">
+         <div class="nav-wrapper">
+            <div class="col s12">
+               <a href="/backoffice" class="breadcrumb">BackOffice</a>
+               <a href="/event_list" class="breadcrumb">Event List</a>
+               <a href="/event_list" class="breadcrumb">{{data.name}}</a>
+            </div>
+         </div>
+      </nav>
       <div class="col s8 offset-s2">
-         <a href="/event_list">Event List</a>
          <br>
          <img class="responsive-img" src={{data.image}}>	
          <h2>{{data.name}}</h2>

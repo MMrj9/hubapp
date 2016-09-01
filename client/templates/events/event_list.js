@@ -13,6 +13,7 @@ Template.eventlist.helpers({
     listSettings: function() {
         return {
             rowsPerPage: 10,
+            class: 'highlight',
             fields: [{
                 key: '_id',
                 label: 'Id',
@@ -28,20 +29,12 @@ Template.eventlist.helpers({
             {
                 key: 'metadata.createdAt',
                 label: 'Created At',
+                fn: function (value) { return moment(value).format('MM-DD-YYYY HH:mm');}, 
                 sortable: true 
             }, {
                 key: 'data.name',
                 label: 'Name',
                 sortable: true 
-            },
-            {
-                key: 'data.start',
-                label: 'When',
-                sortable: true 
-            },
-            {
-                key: 'data.place',
-                label: 'Where'
             }]
         }
     }

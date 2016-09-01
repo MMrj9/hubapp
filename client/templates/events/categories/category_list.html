@@ -1,19 +1,18 @@
-<template name="countrylist">
+<template name="categorylist">
 	<div class="row">
 	<nav class="blue lighten-2">
          <div class="nav-wrapper">
             <div class="col s12">
                <a href="/backoffice" class="breadcrumb">BackOffice</a>
-               <a href="/country_list" class="breadcrumb">Country List</a>
+               <a href="/category_list" class="breadcrumb">Category List</a>
             </div>
          </div>
-      </nav>
+    </nav>
     <br>
     <div style="margin-left:20px">
-    <a href="/country_new"><i class="medium material-icons">add_circle</i></a>
+    <a href="/category_new"><i class="medium material-icons">add_circle</i></a>
     </div>
-	{{> reactiveTable collection=country settings=listSettings}}
+	{{> reactiveTable collection=category settings=listSettings}}
 	</div>
 </template>
-
 

@@ -1,8 +1,16 @@
-<template name="eventTypedetail">
-   {{#with eventType}}
+<template name="categorydetail">
+   {{#with category}}
    <div class="row">
+      <nav class="blue lighten-2">
+         <div class="nav-wrapper">
+            <div class="col s12">
+               <a href="/backoffice" class="breadcrumb">BackOffice</a>
+               <a href="/category_list" class="breadcrumb">Category List</a>
+               <a href="#" class="breadcrumb">{{data.name}}</a>
+            </div>
+         </div>
+    </nav>
       <div class="col s8 offset-s2">
-         <a href="/eventType_list">Event Type List</a>
          <h2>{{data.name}}</h2>
          <div class="card-panel grey" style="color:white;">
             <p> Id: {{_id}} </p>
@@ -11,7 +19,7 @@
             <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
             <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a></p>
          </div>
-         <button class="btn waves-effect waves-light red" type="submit" id="delete-eventType">Delete</button>  
+         <button class="btn waves-effect waves-light red" type="submit" id="delete-category">Delete</button>  
       </div>
    </div>
    {{/with}}

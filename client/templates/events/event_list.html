@@ -1,8 +1,18 @@
 <template name="eventlist">
 	<div class="row">
-	<div class="col s8 offset-s2">
+	  <nav class="blue lighten-2">
+         <div class="nav-wrapper">
+            <div class="col s12">
+               <a href="/backoffice" class="breadcrumb">BackOffice</a>
+               <a href="/event_list" class="breadcrumb">Event List</a>
+            </div>
+         </div>
+      </nav>
+    <br>
+    <div style="margin-left:20px">
+    <a href="/event_import"><i class="medium material-icons">add_circle</i></a>
+    </div>
 	{{> reactiveTable collection=event settings=listSettings}}
-	</div>
 	</div>
 </template>
 

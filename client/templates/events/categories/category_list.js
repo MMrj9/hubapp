@@ -1,24 +1,25 @@
-Template.eventTypelist.onCreated(function() {
+Template.categorylist.onCreated(function() {
   var self = this;
   self.autorun(function() {
-    self.subscribe('eventType');  
+    self.subscribe('category');  
   });
 });
 
 
-Template.eventTypelist.helpers({
-    eventType: function() {
- 		return EventType;
+Template.categorylist.helpers({
+    category: function() {
+ 		return Category;
     },
     listSettings: function() {
         return {
             rowsPerPage: 10,
+            class: 'highlight',
             fields: [{
                 key: '_id',
                 label: 'Id',                
                 fn: function (value, object, key) {     
-                    var pathDef = "/eventType/:eventTypeId";
-                    var params = {eventTypeId: value};
+                    var pathDef = "/category/:categoryId";
+                    var params = {categoryId: value};
                     var queryParams = {};
 
                     var path = FlowRouter.path(pathDef, params, queryParams);
@@ -29,6 +30,7 @@ Template.eventTypelist.helpers({
             {
                 key: 'metadata.createdAt',
                 label: 'Created At',
+                fn: function (value) { return moment(value).format('MM-DD-YYYY HH:mm');}, 
                 sortable: true 
             }, {
                 key: 'data.name',

@@ -1,8 +1,16 @@
 <template name="countrydetail">
    {{#with country}}
    <div class="row">
+   <nav class="blue lighten-2">
+         <div class="nav-wrapper">
+            <div class="col s12">
+               <a href="/backoffice" class="breadcrumb">BackOffice</a>
+               <a href="/country_list" class="breadcrumb">Country List</a>
+               <a href="#" class="breadcrumb">{{data.name}}</a>
+            </div>
+         </div>
+        </nav>
       <div class="col s8 offset-s2">
-         <a href="/country_list">Country List</a>
          <h2>{{data.name}}</h2>
          <h5>Number of users from this country: {{nUsers}}</h5>
          <div class="card-panel grey" style="color:white;">

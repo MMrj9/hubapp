@@ -79,14 +79,14 @@ Meteor.publish('singleEvent', function(id) {
 
 //Event Types
 
-Meteor.publish('eventType', function() {
-  return EventType.find({ });
+Meteor.publish('category', function() {
+  return Category.find({ });
 });
 
-Meteor.publish('eventTypeName', function() {
-  return EventType.find({ },{fields: {"data": 1}});
+Meteor.publish('categoryName', function() {
+  return Category.find({ },{fields: {"data": 1}});
 });
 
-Meteor.publish('singleEventType', function(id) {
-  return EventType.find({_id: id});
+Meteor.publish('singleCategory', function(id) {
+  return Category.find({_id: id});
 });

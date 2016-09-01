@@ -36,12 +36,7 @@ Template.userlist.helpers({
                 key: 'email.address',
                 label: 'Email',
                 sortable: true 
-            },
-            {
-                key: 'metadata.isActive',
-                label: 'Is Active?',
             }
-
     ]
 }}
 });

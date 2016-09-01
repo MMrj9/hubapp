@@ -13,6 +13,7 @@ Template.countrylist.helpers({
     listSettings: function() {
         return {
             rowsPerPage: 10,
+            class: 'highlight',
             fields: [{
                 key: '_id',
                 label: 'Id',                
@@ -29,6 +30,7 @@ Template.countrylist.helpers({
             {
                 key: 'metadata.createdAt',
                 label: 'Created At',
+                fn: function (value) { return moment(value).format('MM-DD-YYYY HH:mm');}, 
                 sortable: true 
             }, {
                 key: 'data.name',
