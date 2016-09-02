@@ -1,64 +1,71 @@
 <template name="userProfile">
-   {{#with user}}
-   <div class="row">
-      <nav class="blue lighten-2">
-         <div class="nav-wrapper">
-            <div class="col s12">
-               <a href="/backoffice" class="breadcrumb">BackOffice</a>
-               <a href="/user_list" class="breadcrumb">User List</a>
-               <a href="#" class="breadcrumb">{{data.fullName}}</a>
+    {{#with user}}
+    <div class="row">
+        <nav class="blue lighten-2">
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="/backoffice" class="breadcrumb">BackOffice</a>
+                    <a href="/user_list" class="breadcrumb">User List</a>
+                    <a href="#" class="breadcrumb">{{data.fullName}}</a>
+                </div>
             </div>
-         </div>
-      </nav>
-      <br>
-      <div class="col s12 l6">
-         <div class="col s12 l6">
-            <img class="circle responsive-img" src="{{data.pictureLink}}" style="width:200px" />
-            <div class="col s12"> 
-               {{> s3_tester }}
+        </nav>
+        <br>
+        <div class="col s12 l6">
+            <div class="col s12 l4">
+                <img class="circle responsive-img" src="{{data.pictureLink}}" style="width:200px" />
+                <div class="col s12">
+                    {{> s3_tester }}
+                </div>
             </div>
-         </div>
-         <br>
-         <div class="col s12 l6">
-         <h2>{{data.firstName}} {{data.lastName}}</h2>
-         <h5> {{ email.address }} </h5>
-         </div>
-         <div class="col s2">
-            {{#if isMale}}
-            <i class="medium material-icons" style="color: blue">perm_identity</i>
-            {{else}} {{#if isFemale}}
-            <i class="medium material-icons" style="color: pink">perm_identity</i>
-            {{else}}
-            {{/if}}
-            {{/if}}
-         </div>
-         <div class="col s10">
-            {{#unless isEmpty age}}
-            <h4>{{ age data.birthDate }} years</h4>
-            {{/unless}}
-            <span> {{formatDate data.birthDate}} </span>
-         </div>
-         <div class="col s12">
-            {{#if data.city}}
-            <h5> {{ data.city }} </h5>
-            {{/if}}
-            {{#if data.countryId}}
-            <h5>{{getCountryName data.countryId}} </h5>
-            {{/if}}
-         </div>
-      </div>
-      <div class="col s12 l6">
-         <div class="card-panel grey" style="color:white;">
-            <p> Id: {{_id}} </p>
-            <p> Is Active?: {{metadata.isActive}} </p>
-            <p> Authentication: {{metadata.authType}} </p>
-            <p> Last login at: {{formatDateTime metadata.lastLoginAt}} </p>
-            <p> Created at: {{formatDateTime metadata.createdAt}} </p>
-            <p> Created by: <a href="/user/{{metadata.createdBy}}" class="whitelink"> {{metadata.createdBy}} </a></p>
-            <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
-            <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a></p>
-         </div>
-      </div>
-   </div>
-   {{/with}}
+            <br>
+            <div class="col s12 l8">
+                <h2>{{data.firstName}} {{data.lastName}}</h2>
+                <h5> {{ email.address }} </h5>
+            <div class="col s12 l2">
+                {{#if data.gender}}
+                {{#if isMale}}
+                <i class="medium material-icons" style="color: blue">perm_identity</i> {{else}} {{#if isFemale}}
+                <i class="medium material-icons" style="color: pink">perm_identity</i> {{else}} {{/if}} {{/if}}{{/if}}
+            </div>
+            <div class="col s12 l10">
+                {{#if data.birthDate}}
+                <h4>
+                  {{#unless isEmpty age}}
+                  {{ age data.birthDate }} years 
+                  {{/unless}}
+                 {{formatDate data.birthDate}} 
+                </h4>
+                {{/if}} 
+            </div>
+            <div class="col s12 l6">
+                {{#if data.city}}
+                <h5> {{ data.city }} </h5> {{/if}} {{#if data.countryId}}
+                <h5>{{getCountryName data.countryId}} </h5> {{/if}}
+            </div>
+            </div>
+        </div>
+        <div class="col s12 l6">
+            <div class="card-panel grey" style="color:white;">
+                <p> Id: {{_id}} </p>
+                <p> Is Active?: {{metadata.isActive}} </p>
+                <p> Authentication: {{metadata.authType}} </p>
+                <p> Last login at: {{formatDateTime metadata.lastLoginAt}} </p>
+                <p> Created at: {{formatDateTime metadata.createdAt}} </p>
+                <p> Created by: <a href="/user/{{metadata.createdBy}}" class="whitelink"> {{metadata.createdBy}} </a>
+                </p>
+                <p> Last updated at: {{formatDateTime metadata.lastUpdatedAt}} </p>
+                <p> Last updated by: <a href="/user/{{metadata.lastUpdatedBy}}" class="whitelink"> {{metadata.lastUpdatedBy}} </a>
+                </p>
+                <h5>Current Role: {{roles}} </h5>
+                  <select id="role-select">
+                        <option disabled="disabled" selected="selected">Change Role</option>
+                        {{#each rolesList}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+            </div>
+        </div>
+    </div>
+    {{/with}}
 </template>
