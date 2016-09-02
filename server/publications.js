@@ -79,7 +79,7 @@ Meteor.publish('singleEvent', function(id) {
   return Event.find(id);
 });
 
-//Event Types
+//Categories
 
 Meteor.publish('category', function() {
   return Category.find({ });
@@ -92,6 +92,11 @@ Meteor.publish('categoryName', function() {
 Meteor.publish('singleCategory', function(id) {
   return Category.find({_id: id});
 });
+
+Meteor.publish('subCategories', function(id) {
+  return Category.find({"data.parentId": id},{fields: {"data": 1}});
+});
+
 
 //Ideas
   Meteor.publish('ideaCounter', function () {

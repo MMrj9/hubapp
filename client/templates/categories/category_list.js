@@ -36,6 +36,22 @@ Template.categorylist.helpers({
                 key: 'data.name',
                 label: 'Name',
                 sortable: true 
+            }, {
+                key: 'data.parentId',
+                label: 'Parent',                
+                fn: function (value, object, key) {  
+                    if(value){   
+                    var pathDef = "/category/:categoryId";
+                    var params = {categoryId: value};
+                    var queryParams = {};
+                    value = Category.find({_id: value}).fetch()[0].data.name;
+                    var path = FlowRouter.path(pathDef, params, queryParams);
+                    return new Spacebars.SafeString("<a href="+path+">"+value+"</a>");
+                    }
+                    else 
+                        return "";
+                 }, 
+                sortable: true 
             }
             ]
         }
