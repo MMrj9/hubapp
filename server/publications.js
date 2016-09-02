@@ -1,3 +1,5 @@
+if (Meteor.isServer) {
+
 /**
 Não esquecer de apenas publicar certos campos
 */
@@ -90,3 +92,11 @@ Meteor.publish('categoryName', function() {
 Meteor.publish('singleCategory', function(id) {
   return Category.find({_id: id});
 });
+
+//Ideas
+  Meteor.publish('ideaCounter', function () {
+    Counts.publish(this, 'total-ideas', Idea.find());
+  });
+
+
+}

@@ -2,13 +2,23 @@ Template.idea_new.created = function() {
     this.authenticated = new ReactiveVar(false);
     this.name = new ReactiveVar("");
     this.email = new ReactiveVar("");
+    
+    Meteor.subscribe('ideaCounter');
+
 }
 
 
 Template.idea_new.helpers({
     'isAuthenticated': function(){
             return Template.instance().authenticated.get();
-        }
+        },
+    'ideaCount': function(){
+            return Counts.get('total-ideas');
+    },
+    'reachedLimit': function(){
+            return (Counts.get('total-ideas')>=50);
+    } 
+
 });
 
 Template.idea_new.events({
@@ -69,10 +79,13 @@ Template.idea_new.events({
                     type: "error"
                 });
                 throw new Meteor.Error("Facebook login failed");
+                Template.instance().authenticated.set(false);
             }
         });
+            if(Meteor.userId()){
             //Enable idea submission
             Template.instance().authenticated.set(true);
+            }
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
     },
@@ -88,10 +101,13 @@ Template.idea_new.events({
                     type: "error"
                 });                
                 throw new Meteor.Error("Google login failed");
+                Template.instance().authenticated.set(false);
             }
         });
+            if(Meteor.userId()){
             //Enable idea submission
             Template.instance().authenticated.set(true);
+            }
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
     },
