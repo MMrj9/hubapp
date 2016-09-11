@@ -4,20 +4,44 @@ Template.idea_new.created = function() {
     this.email = new ReactiveVar("");
     
     Meteor.subscribe('ideaCounter');
-
+    Meteor.subscribe('ideas');
 }
+
+Template.idea_new.rendered = function() {
+        this.autorun(function() {
+            if (Meteor.userId()) {
+              //Enable idea submission
+              Template.instance().authenticated.set(true);
+            }
+        });
+};
 
 
 Template.idea_new.helpers({
     'isAuthenticated': function(){
             return Template.instance().authenticated.get();
-        },
+    },
     'ideaCount': function(){
             return Counts.get('total-ideas');
     },
     'reachedLimit': function(){
             return (Counts.get('total-ideas')>=50);
-    } 
+    },
+    'alreadySubmittedIdea': function(){
+        if(Template.instance().authenticated.get()){
+            if (Meteor.userId()) {
+                return (Idea.find({"data.email": Meteor.user().email.address}).fetch()[0]);
+            }
+            else{
+                return (Idea.find({"data.email": Template.instance().email.get()}).fetch()[0]);
+            }
+        }
+        else
+            return null;
+
+
+    },
+
 
 });
 
@@ -31,7 +55,9 @@ Template.idea_new.events({
         idea = {data:{
             name: Meteor.user().data.fullName,
             email: Meteor.user().email.address,
-            content: $('#content').val()
+            content: $('#content').val(),
+            targetAudience: $('#targetAudience').val(),
+            monetization: $('#monetization').val()
         }
         };
         }
@@ -39,7 +65,9 @@ Template.idea_new.events({
         idea = {data:{
             name: Template.instance().name.get(),
             email: Template.instance().email.get(),
-            content: $('#content').val()
+            content: $('#content').val(),
+            targetAudience: $('#targetAudience').val(),
+            monetization: $('#monetization').val()
         }
         };
         }
@@ -79,20 +107,13 @@ Template.idea_new.events({
                     type: "error"
                 });
                 throw new Meteor.Error("Facebook login failed");
-                Template.instance().authenticated.set(false);
             }
         });
-            if(Meteor.userId()){
-            console.log(Meteor.userId());
-            //Enable idea submission
-            Template.instance().authenticated.set(true);
-            }
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
     },
     
-    'click #google-login': function(event) {
-        debugger 
+    'click #google-login': function(event) { 
         event.preventDefault();
         Meteor.loginWithGoogle({}, function(err){
             if (err) {
@@ -103,17 +124,9 @@ Template.idea_new.events({
                     type: "error"
                 });                
                 throw new Meteor.Error("Google login failed");
-                Template.instance().authenticated.set(false);
             }
         });
-            if(Meteor.userId()){
-            console.log(Meteor.userId());
-            //Enable idea submission
-            Template.instance().authenticated.set(true);
-            }
-            else{
-            console.log(Meteor.userId());
-            }
+
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
     },

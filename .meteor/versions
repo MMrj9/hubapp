@@ -73,12 +73,12 @@ msavin:mongol@2.0.1
 mystor:device-detection@0.2.0
 natestrauser:animate-css@3.5.1
 npm-bcrypt@0.9.1
-npm-mongo@1.5.48
+npm-mongo@1.5.49
 oauth@1.1.11
 oauth2@1.1.10
 observe-sequence@1.0.12
 ordered-dict@1.0.8
-promise@0.8.4
+promise@0.8.7
 raix:ui-dropped-event@0.0.7
 random@1.0.10
 rate-limit@1.0.5

@@ -25,6 +25,7 @@ Template.registerHelper('getCountryName', function(id) {
 
 //Verificar se atributo/objecto é nulo
 Template.registerHelper('isEmpty', function (object) {
+  console.log(object);
     if(object==null || object=="")
       return true;
     else

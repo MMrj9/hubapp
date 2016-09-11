@@ -103,5 +103,9 @@ Meteor.publish('subCategories', function(id) {
     Counts.publish(this, 'total-ideas', Idea.find());
   });
 
+  Meteor.publish('ideas', function(email) {
+    return Idea.find({ },{fields: {"data": 1}});
+});
+
 
 }
