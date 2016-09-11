@@ -59,7 +59,7 @@ Meteor.methods({
             place: data.place.name,
             city: data.place.location.city,
             externalId: data.id,
-            isDraft: true,
+            status: "new",
             image: cover.cover.source
         }
         };

@@ -1,0 +1,67 @@
+    <template name="eventnew">
+        <div class="row">
+        <div class="col s8 offset-s2">
+            <h1>New Event</h1>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <form id="event-form">
+                  <div class="section">
+                    <div class="col s12">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input id="name" type="text" required>
+                                <label for="name">Name</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="beginDate" type="text" class="form-control datepicker">
+                                <label for="beginDate">Begin Date</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="beginTime" class="timepicker" type="time">
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="endDate" type="date" class="form-control datepicker">
+                                <label for="endDate">End Date</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="endTime" type="time" class="form-control timepicker">
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="city" type="text">
+                                <label for="city">City</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="input-field">
+                                <input id="place" type="text">
+                                <label for="place">Place</label>
+                            </div>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="description" class="materialize-textarea"></textarea>
+                            <label for="description">Description</label>
+                        </div>
+                </div>
+            </div>
+    </form>
+</div>
+</div>
+<div class="row" style="margin-top: 50px">
+    <div class="col s8 offset-s2">
+        <button class="waves-effect waves-light btn" id="create-event" type="submit">Create</button>
+    </div>
+</div>
+</template>
+

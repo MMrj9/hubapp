@@ -83,6 +83,7 @@ Template.idea_new.events({
             }
         });
             if(Meteor.userId()){
+            console.log(Meteor.userId());
             //Enable idea submission
             Template.instance().authenticated.set(true);
             }
@@ -91,6 +92,7 @@ Template.idea_new.events({
     },
     
     'click #google-login': function(event) {
+        debugger 
         event.preventDefault();
         Meteor.loginWithGoogle({}, function(err){
             if (err) {
@@ -105,8 +107,12 @@ Template.idea_new.events({
             }
         });
             if(Meteor.userId()){
+            console.log(Meteor.userId());
             //Enable idea submission
             Template.instance().authenticated.set(true);
+            }
+            else{
+            console.log(Meteor.userId());
             }
             //Update last login 
             Meteor.users.update( { _id: Meteor.userId() }, {$set: {"metadata.lastLoginAt": new Date()}});
