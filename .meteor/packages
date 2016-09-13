@@ -41,6 +41,6 @@ mystor:device-detection
 email
 fourseven:scss
 natestrauser:animate-css
-materialize:materialize
 tmeasday:publish-counts
 alanning:roles
+materialize:materialize@=0.97.6

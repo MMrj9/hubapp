@@ -54,7 +54,7 @@ lepozepo:s3@5.2.2
 livedata@1.0.18
 localstorage@1.0.11
 logging@1.1.15
-materialize:materialize@0.97.7
+materialize:materialize@0.97.6
 meteor@1.2.17
 meteor-base@1.0.4
 meteorhacks:async@1.0.0

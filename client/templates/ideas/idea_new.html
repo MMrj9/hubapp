@@ -1,91 +1,89 @@
 <template name="idea_new">
     <div class="row">
         <div class="col s12 l12 center-align animated pulse">
-                <h1>Rise Above</h1>
-                <h5>Isto é um Concurso de Ideias!</h5>
-                <h5>E {{ideaCount}} já lá estão!</h5>
-                <img src="img/hublogoblue.png" alt="hublogoblue" style="height:200px;margin-top:50px;">
+            <h1>Rise Above</h1>
+            <h5>Isto é um Concurso de Ideias!</h5>
+            <h5>E {{ideaCount}} já lá estão!</h5>
+            <img src="img/hublogoblue.png" alt="hublogoblue" style="height:200px;margin-top:50px;">
         </div>
     </div>
     {{#unless reachedLimit}}
     <div class="row">
-        {{#if isAuthenticated}}
-        {{#if alreadySubmittedIdea}}
-        {{#with alreadySubmittedIdea}}
-            <div class="col s12 l12 center-align">
-                <h4>{{data.name}}, a tua ideia já foi submetida e vai ser analisada por 8 macacos vietnamitas! Dia x recebes um e-mail com o resultado!</h4>
-            </div>
-        {{/with}}
-        {{else}}
+        {{#if isAuthenticated}} {{#if alreadySubmittedIdea}} {{#with alreadySubmittedIdea}}
+        <div class="col s12 l12 center-align">
+            <h5>{{data.name}}, a tua ideia já foi submetida e vai ser analisada por 8 macacos vietnamitas! Dia x recebes um e-mail com o resultado!</h5>
+            <img src="img/monkey.png" alt="monkey" style="height:150px;">
+        </div>
+        {{/with}} {{else}}
         <div class="col s12">
             <form id="idea-form">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">mode_edit</i>
                     <textarea id="content" class="materialize-textarea"></textarea>
-                    <label for="content">Ideia</label>
+                    <label for="content">Ideia - Descreve sumariamente a tua ideia</label>
                 </div>
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">perm_identity</i>
-                    <input id="targetAudience" type="text" class="validate">
-                    <label for="targetAudience">Público Alvo</label>
+                    <textarea id="targetAudience" class="materialize-textarea"></textarea>
+                    <label for="targetAudience">Público Alvo - Para quem se dirige? Quem são os teus clientes?</label>
                 </div>
                 <div class="input-field col s12 l6">
                     <i class="material-icons prefix">attach_money</i>
-                    <input id="monetization"  type="text" class="validate">
-                    <label for="monetization">Como Rentabilizar</label>
+                    <textarea id="monetization" class="materialize-textarea"></textarea>
+                    <label for="monetization">Como Rentabilizar - Como vais gerar dinheiro com a ideia? Quais são as fontes de receitas?</label>
                 </div>
                 <div class="col s12 l4 offset-l4 center-align">
-                    <button class="waves-effect waves-light btn blue darken-3" id="create" type="submit">Rise Above!</button>
+                    <button class="waves-effect waves-light btn blue darken-3" id="create" type="submit" style="margin-top:20px;margin-bottom:20px">Rise Above!</button>
                 </div>
             </form>
         </div>
-        {{/if}}
-        {{else}}
+        {{/if}} {{else}}
         <div class="col s12 l12 animated pulse">
-                <p align="justify">Ninguém te pede para reinventares a roda, o clip ou a esferográfica. Lembra-te que todas as ideias brilhantes nascem de uma  necessidade! Já sabemos que és criativo e que tens o mindset - Mas agora queremos ver se consegues juntar as duas coisas e ser um verdadeiro empreendedor. Submete a tua ideia de negócio, com cabeça, tronco e membros (porque ninguém quer uma ideia coxa!) e ganha a oportunidade de seres acompanhado pelo Hub no seu desenvolvimento.</p>
-                <p align="justify">Atenção: Ninguém te vai roubar a ideia e implementá-la na China! Nós já tivemos a nossa ideia genial (não se nota?!)</p>
-                <p align="justify">É melhor despachares-te, só há espaço para 50 génios!</p>
+            <p align="justify">Ninguém te pede para reinventares a roda, o clip ou a esferográfica. Lembra-te que todas as ideias brilhantes nascem de uma necessidade! Já sabemos que és criativo e que tens o mindset - Mas agora queremos ver se consegues juntar as duas coisas e ser um verdadeiro empreendedor. Submete a tua ideia de negócio, com cabeça, tronco e membros (porque ninguém quer uma ideia coxa!) e ganha a oportunidade de seres acompanhado pelo Hub no seu desenvolvimento.</p>
+            <p align="justify">Atenção: Ninguém te vai roubar a ideia e implementá-la na China! Nós já tivemos a nossa ideia genial (não se nota?!)</p>
+            <p align="justify">É melhor despachares-te, só há espaço para 50 génios!</p>
         </div>
         <div class="col s12 l12 animated slideInLeft">
             <div class="col s12 l4 offset-l2">
-                    <div class="col s12 l6">
-                        <div class="input-field">
-                            <input id="name" type="text" class="validate">
-                            <label for="name">Nome</label>
-                        </div>
+                <div class="col s12 l6">
+                    <div class="input-field">
+                        <input id="name" type="text" class="validate">
+                        <label for="name">Nome</label>
                     </div>
-                    <div class="col s12 l6">
-                        <div class="input-field">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">E-mail</label>
-                        </div>
+                </div>
+                <div class="col s12 l6">
+                    <div class="input-field">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">E-mail</label>
                     </div>
-                    <div class="col 12 l4 center-align">
-                    <button id="check-auth" class="waves-effect waves-light btn" style="margin-top:20px"> Next</button>
-                    </div>
-                    <br>
+                </div>
+                <div class="col 12 l4 center-align">
+                    <button id="check-auth" class="waves-effect waves-light btn blue darken-3" style="margin-top:20px"> Next</button>
+                </div>
+                <br>
             </div>
             <div class="col s12 l1 center-align">
                 <h5 class="valign">ou</h5>
-            </div>             
+            </div>
             <div class="col s12 l4 center-align">
                 <div class="col">
-                    <button id="facebook-login" class="waves-effect waves-light btn" style="margin-top:20px"> Login with Facebook</button>
+                    <button id="facebook-login" class="waves-effect waves-light btn blue darken-3" style="margin-top:20px"> Login with Facebook</button>
                 </div>
                 <div class="col">
-                    <button id="google-login" class="waves-effect waves-light btn" style="margin-top:20px"> Login with Google</button>
+                    <button id="google-login" class="waves-effect waves-light btn blue darken-3" style="margin-top:20px"> Login with Google</button>
                 </div>
             </div>
         </div>
         {{/if}}
-    </div>
-    <div class="col s12 l12 center-align animated pulse">
-        <p>Uma parceria entre:</p>
-
     </div>
     {{else}}
     <div class="row center-align">
         <h5>:( Idea limit reached</h5>
     </div>
     {{/unless}}
+    <div class="col s12 l12 center-align animated pulse">
+        <p>Uma parceria entre:</p>
+        <img src="img/hubFullLogo.png" alt="hublogo" style="height:50px;">
+        <img src="img/logoIPS.png" alt="IPSlogo" style="height:80px;margin-left:30px;margin-top:10px;">
+    </div>
 </template>
