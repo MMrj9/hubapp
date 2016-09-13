@@ -25,7 +25,7 @@ Template.idea_new.helpers({
             return Counts.get('total-ideas');
     },
     'reachedLimit': function(){
-            return (Counts.get('total-ideas')>=50);
+            return (Counts.get('total-ideas')>=30);
     },
     'alreadySubmittedIdea': function(){
         if(Template.instance().authenticated.get()){
