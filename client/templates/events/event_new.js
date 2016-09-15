@@ -5,6 +5,10 @@ Template.eventnew.rendered = function() {
             format: 'dd-mm-yyyy'
         });
 
+    var timepicker = new TimePicker();
+
+    timepicker.bindInput('#beginTime', {timeFormat: 'military'});
+
 };
 
 Template.eventnew.events({

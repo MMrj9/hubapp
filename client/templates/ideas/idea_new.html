@@ -7,14 +7,17 @@
             <img src="img/hublogoblue.png" alt="hublogoblue" style="height:200px;margin-top:50px;">
         </div>
     </div>
-    {{#unless reachedLimit}}
+     {{#if alreadySubmittedIdea}} {{#with alreadySubmittedIdea}}
     <div class="row">
-        {{#if isAuthenticated}} {{#if alreadySubmittedIdea}} {{#with alreadySubmittedIdea}}
         <div class="col s12 l8 offset-l2 center-align">
             <h5>{{data.name}}, a tua ideia já foi submetida e vai ser analisada por 8 macacos vietnamitas! Dia x recebes um e-mail com o resultado!</h5>
             <img src="img/monkey.png" alt="monkey" style="height:150px;">
         </div>
-        {{/with}} {{else}}
+    </div>
+    {{/with}} {{else}}
+    {{#unless reachedLimit}}
+    <div class="row">
+        {{#if isAuthenticated}}
         <div class="col s12 l8 offset-l2">
             <form id="idea-form">
                 <div class="input-field col s12">
@@ -37,7 +40,7 @@
                 </div>
             </form>
         </div>
-        {{/if}} {{else}}
+        {{else}}
         <div class="col s12 l8 offset-l2 animated pulse">
             <p align="justify">Ninguém te pede para reinventares a roda, o clip ou a esferográfica. Lembra-te que todas as ideias brilhantes nascem de uma necessidade! Já sabemos que és criativo e que tens o mindset - Mas agora queremos ver se consegues juntar as duas coisas e ser um verdadeiro empreendedor. Submete a tua ideia de negócio, com cabeça, tronco e membros (porque ninguém quer uma ideia coxa!) e ganha a oportunidade de seres acompanhado pelo Hub no seu desenvolvimento.</p>
             <p align="justify">Atenção: Ninguém te vai roubar a ideia e implementá-la na China! Nós já tivemos a nossa ideia genial (não se nota?!)</p>
@@ -80,10 +83,11 @@
     {{else}}
     <div class="row center-align">
         <div class="col s12 l8 offset-l2">
-            <h5>:( Idea limit reached</h5>
+            <h5>Atingimos ao limite de candidaturas. Não te esqueças da tua ideia e aguarda pela abertura de um novo concurso!</h5>
         </div>
     </div>
     {{/unless}}
+    {{/if}} 
     <div class="col s12 l12 center-align animated pulse" style="margin-top:20px;">
         <p>Uma parceria entre:</p>
         <img src="img/hubFullLogo.png" alt="hublogo" style="height:50px;">
